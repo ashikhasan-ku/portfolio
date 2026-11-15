@@ -1,4 +1,4 @@
-# ashikhasan.netlify.app
+# ashik-hasan.netlify.app
 
 Personal portfolio for Ashik Hasan. Plain HTML, CSS and JavaScript: no framework and no build step, so what you see in these files is exactly what goes live.
 
