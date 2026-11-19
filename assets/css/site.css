@@ -481,3 +481,9 @@ a:hover { color: var(--plan); }
 }
 [data-theme="dark"] .badge-now { color: #4ADE80; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge-now { color: #4ADE80; } }
+@media (max-width: 860px) {
+  .hero-grid .portrait { display: flex; align-items: center; gap: 1rem; max-width: none; }
+  .hero-grid .portrait-frame { width: 84px; flex: none; aspect-ratio: 1; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255,255,255,.12); }
+  .hero-grid .portrait-frame img { object-position: 50% 22%; }
+  .hero-grid .portrait figcaption { margin: 0; flex-direction: column; gap: .15rem; }
+}
