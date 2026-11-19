@@ -31,12 +31,16 @@ Save files with these exact names in `assets/photos/`. Empty slots stay hidden, 
 
 | File | Where it appears | Shape |
 |---|---|---|
-| `headshot.jpg` | Home hero | Portrait, ~800×1000 |
-| `about.jpg` | About hero | Portrait, ~800×1000 |
-| `campus.jpg` | Academics banner + Home tile | Wide, ~1600×700 |
-| `running.jpg` | Home "About me" tile | Wide, ~1200×800 |
-| `run-1.jpg` … `run-3.jpg` | About, running section | Landscape |
-| `gallery-1.jpg` … `gallery-6.jpg` | About, "Moments" (section appears once one exists) | Landscape |
+| `headshot.jpg` | Home hero | Portrait, 800×1000 |
+| `about.jpg` | About hero | Portrait, 800×1000 |
+| `home-tile.jpg` | Home "About me" tile | Any |
+| `campus.jpg` | Academics banner + Home tile (not added yet) | Wide, ~1600×700 |
+| `run-marathon.jpg`, `run-teatrail.jpg`, `run-ucr.jpg` | About, running mosaic | Square + 2 portrait |
+| `sport-*.jpg` | About, sport strip | Landscape 4:3 |
+| `game-*.jpg` | About, games strip | Landscape 4:3 |
+| `gallery-1.jpg` … `gallery-6.jpg` | About, "Moments" | Landscape 4:3 |
+
+To swap a photo, save the new one with the same name. To change a caption, edit the `<figcaption>` next to it in `about.html`.
 
 Keep each photo under ~300 KB (squoosh.app does this in the browser).
 
