@@ -22,12 +22,19 @@
   <link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
-  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preload" href="/assets/fonts/silkscreen-700.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    try {
+      var d = document.documentElement, t = localStorage.getItem('theme'); if (t) d.dataset.theme = t;
+      if (sessionStorage.getItem('pxnav')) { sessionStorage.removeItem('pxnav');
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { d.classList.add('px-enter'); setTimeout(function () { d.classList.remove('px-enter'); }, 1500); } }
+    } catch (e) {}
+  </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Md. Ashik Hasan","alternateName":"Ashik Hasan","jobTitle":"Project Manager","worksFor":{"@type":"Organization","name":"Brain Station 23"},"address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Khulna University"},"hasCredential":{"@type":"EducationalOccupationalCredential","name":"Certified ScrumMaster (CSM)","recognizedBy":{"@type":"Organization","name":"Scrum Alliance"}},"knowsAbout":["Project management","Scrum","WBS and estimation","Business intelligence","E-commerce operations"],"url":"https://ashik-hasan.netlify.app/","sameAs":["https://www.linkedin.com/in/ashikhasan-ku/","https://gamingonphone.com/author/ashik-hasan/"]}
   </script>
 </head>
-<body class="home">
+<body class="home navy-head" data-page="Home">
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
@@ -53,86 +60,125 @@
   </header>
 
   <main id="main">
-    <!-- ============ HERO ============ -->
-    <section class="home-hero on-navy blueprint" aria-labelledby="hero-title">
+    <!-- ============ HERO: the title is the artwork ============ -->
+    <section class="home-hero on-navy blueprint px-bottom" aria-labelledby="hero-title">
       <div class="wrap">
         <div class="hero-grid">
           <div>
             <p class="status"><span class="pulse" aria-hidden="true"></span>Project Manager at Brain Station 23</p>
-            <h1 id="hero-title" class="hero-title">I take projects from first conversation to final sign-off.</h1>
-            <p class="hero-lede">Project Manager and Certified ScrumMaster with <strong data-exp>5+ years</strong> at Brain Station 23, Daraz (Alibaba Group), WPP, iFarmer and Bdjobs. I scope the work, get teams shipping, and find the leaks in the numbers.</p>
+            <div class="title-wrap">
+              <h1 id="hero-title" class="title-art">
+                <span class="sr-only">Hello, I’m Ashik Hasan, Project Manager.</span>
+                <span class="title-art-vis" aria-hidden="true">
+                  <span class="dot-hello-wrap"><span class="dot-hello">Hello, I’m Ashik Hasan.</span></span>
+                  <span class="ta-word">Pr<svg class="glyph glyph-o" viewBox="0 0 100 100"><circle class="ring-track" cx="50" cy="50" r="38" stroke-width="22"/><circle class="ring-fill" cx="50" cy="50" r="38" stroke-width="22"/><rect class="ring-kick" x="44" y="-4" width="12" height="12" transform="rotate(45 50 2)"/></svg>ject</span>
+                  <span class="ta-word">M<svg class="glyph glyph-a" viewBox="0 0 100 100"><path class="a-legs" d="M0 100 L35 0 H65 L100 100 H74 L50 26 L26 100 Z"/><rect class="a-bar" x="12" y="60" width="66" height="15"/><rect class="a-ms" x="82" y="58.5" width="12" height="12" transform="rotate(45 88 64.5)"/></svg>nager</span>
+                </span>
+              </h1>
+              <span class="sticker sticker-csm"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5"/></svg><span class="two"><span>Certified</span><span>ScrumMaster</span></span></span>
+            </div>
+            <p class="hero-lede">I take projects from first conversation to final sign-off. <b data-exp="cap">5+ years</b> of scoping, shipping and fixing delivery across telco, e-commerce, data and SaaS.</p>
             <ul class="domains" aria-label="Domains I work in">
-              <li>Telco</li><li>E-commerce</li><li>Fintech</li><li>Data &amp; BI</li><li>Learning platforms</li><li>Cybersecurity</li><li>SaaS</li>
+              <li>Telco</li><li>E-commerce</li><li>Fintech</li><li>Data &amp; BI</li><li>Learning platforms</li><li>Website development</li><li>Cloud</li><li>SaaS</li>
             </ul>
             <div class="hero-actions">
               <a class="btn btn-primary" href="/work.html">See my work</a>
               <button class="btn btn-ghost" type="button" data-resume-open>Request my résumé</button>
             </div>
           </div>
-          <!-- PHOTO: /assets/photos/headshot.jpg (portrait, 800×1000) -->
-          <figure class="portrait">
-            <div class="portrait-frame" data-photo-frame>
-              <img data-photo src="/assets/photos/headshot.jpg" alt="Ashik Hasan" width="800" height="1000" fetchpriority="high">
-              <div class="portrait-art" aria-hidden="true"><span class="mono-big">AH</span><span class="bars"><i></i><i></i><i></i></span></div>
-            </div>
-            <figcaption><b>Dhaka, Bangladesh</b><span>CSM, Scrum Alliance</span></figcaption>
+
+          <!-- AVATAR: pixel sprite (/assets/photos/avatar-pixel.png) flips to the photo (/assets/photos/headshot.jpg) -->
+          <figure class="avatar">
+            <button class="flip" type="button" data-flip aria-pressed="false" aria-label="Show the photo">
+              <span class="flip-inner">
+                <span class="face face-px"><span class="hp-bar" aria-hidden="true">P1<i></i></span><img src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" fetchpriority="high"></span>
+                <span class="face face-photo"><img data-src="/assets/photos/headshot.jpg" alt="Ashik Hasan" width="800" height="1000" fetchpriority="low" decoding="async"></span>
+              </span>
+            </button>
+            <span class="sticker sticker-tag" aria-hidden="true">&gt; <b>ashaxel</b><i class="caret"></i></span>
+            <figcaption><b>Dhaka, Bangladesh</b><span class="flip-hint">Tap to flip</span></figcaption>
           </figure>
         </div>
 
-        <!-- The timeline draws itself from /assets/js/career-data.js -->
-        <figure class="plan hero-plan" data-timeline aria-label="Career timeline"></figure>
+        <div class="marquee">
+          <p class="marquee-label">Delivering end to end with teams at</p>
+          <div class="marquee-view">
+            <ul class="marquee-track">
+              <li><span data-logo="bs23"></span>Brain Station 23</li><li><span data-logo="daraz"></span>Daraz (Alibaba Group)</li><li><span data-logo="wpp"></span>WPP Production</li><li><span data-logo="ifarmer"></span>iFarmer</li><li><span data-logo="bdjobs"></span>Bdjobs.com</li>
+              <li aria-hidden="true"><span data-logo="bs23"></span>Brain Station 23</li><li aria-hidden="true"><span data-logo="daraz"></span>Daraz (Alibaba Group)</li><li aria-hidden="true"><span data-logo="wpp"></span>WPP Production</li><li aria-hidden="true"><span data-logo="ifarmer"></span>iFarmer</li><li aria-hidden="true"><span data-logo="bdjobs"></span>Bdjobs.com</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ IMPACT ============ -->
-    <section class="impact" aria-label="Impact in numbers">
-      <div class="wrap impact-grid">
-        <div class="stat">
-          <p class="from"><span data-logo="daraz" style="--size:22px"></span>Daraz</p>
-          <p class="stat-num"><span data-count="10">10</span><small>%</small></p>
-          <p>of Daraz’s platform GMV came through the seller programme I governed</p>
-        </div>
-        <div class="stat">
-          <p class="from"><span data-logo="wpp" style="--size:22px"></span>WPP Production</p>
-          <p class="stat-num"><span data-count="30">30</span><small>+</small></p>
-          <p>BI solutions delivered for PIMCO across 25 countries</p>
-        </div>
-        <div class="stat">
-          <p class="from"><span data-logo="ifarmer" style="--size:22px"></span>iFarmer</p>
-          <p class="stat-num"><span data-count="90">90</span><small>%</small></p>
-          <p>sprint commitment reliability, up from 60% after I introduced Scrum</p>
-        </div>
-        <div class="stat">
-          <p class="from"><span data-logo="daraz" style="--size:22px"></span>Daraz</p>
-          <p class="stat-num"><span data-count="200">200</span><small>→60</small></p>
-          <p>daily delivery SLA breaches, after new governance and SOPs</p>
+    <!-- ============ SCOREBOARD: best result at each company ============ -->
+    <section class="score" aria-labelledby="score-title">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="lvl">Scoreboard</span>
+          <h2 id="score-title">The best result at every stop</h2>
+          <p>One number from each role, newest first. The stories behind them are on the work page.</p>
+        </header>
+        <div class="score-grid" data-reveal>
+          <a class="score-card" href="/work.html#bs23" data-tilt>
+            <p class="from"><span data-logo="bs23"></span>Brain Station 23</p>
+            <p class="num"><span data-count="7">7</span></p>
+            <p>verticals scoped, estimated and proposed, from telco to learning platforms</p>
+            <span class="yr">2026 to now</span>
+          </a>
+          <a class="score-card" href="/work.html#sof" data-tilt>
+            <p class="from"><span data-logo="daraz"></span>Daraz</p>
+            <p class="num"><small>BDT </small><span data-count="40">40</span><small>K</small></p>
+            <p>a day in revenue leakage stopped in a programme worth ~10% of GMV</p>
+            <span class="yr">2025 to 2026</span>
+          </a>
+          <a class="score-card" href="/work.html#pimco" data-tilt>
+            <p class="from"><span data-logo="wpp"></span>WPP Production</p>
+            <p class="num"><span data-count="30">30</span><small>+</small></p>
+            <p>BI solutions delivered for PIMCO across 25 countries</p>
+            <span class="yr">2023 to 2025</span>
+          </a>
+          <a class="score-card" href="/work.html#ifarmer" data-tilt>
+            <p class="from"><span data-logo="ifarmer"></span>iFarmer</p>
+            <p class="num">60<small>→</small><span data-count="90">90</span><small>%</small></p>
+            <p>sprint commitment reliability after I introduced Scrum</p>
+            <span class="yr">2022 to 2023</span>
+          </a>
+          <a class="score-card" href="/career.html#bdjobs" data-tilt>
+            <p class="from"><span data-logo="bdjobs"></span>Bdjobs.com</p>
+            <p class="num"><span data-count="30">30</span><small>K+</small></p>
+            <p>video résumés gathered through campaigns and new features</p>
+            <span class="yr">2021 to 2022</span>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ============ PILLARS ============ -->
-    <section class="section" aria-labelledby="pillars-title">
+    <section class="section band band-tint" aria-labelledby="pillars-title">
       <div class="wrap">
         <header class="section-head">
-          <h2 id="pillars-title">How I can help</h2>
+          <span class="lvl">How I can help</span>
+          <h2 id="pillars-title">Scope it, ship it, improve it</h2>
           <p>Three things I do well, each backed by projects you can read.</p>
         </header>
-        <div class="pillars">
-          <a class="pillar" href="/work.html#scope">
+        <div class="pillars" data-reveal>
+          <a class="pillar" href="/work.html#scope" data-tilt>
             <span class="pillar-step" aria-hidden="true"><i></i></span>
             <h3>Scope it</h3>
             <p>I turn a vague need into a plan, a price and a team a client can sign off.</p>
             <ul><li>End-to-end lifecycle at Brain Station 23</li><li>WBS, PERT and analogous estimation</li><li>Fixed, subscription and revenue-share pricing</li></ul>
             <span class="pillar-go">See scoping work</span>
           </a>
-          <a class="pillar" href="/work.html#ship">
+          <a class="pillar" href="/work.html#ship" data-tilt>
             <span class="pillar-step" aria-hidden="true"><i></i><i></i></span>
             <h3>Ship it</h3>
             <p>I get teams delivering predictably, across time zones and stakeholders.</p>
             <ul><li>Scrum rollout: 60% → 90% reliability</li><li>Waterfall to Agile: 50% faster BI delivery</li><li>14 hubs closed, sellers moved safely</li></ul>
             <span class="pillar-go">See delivery work</span>
           </a>
-          <a class="pillar" href="/work.html#improve">
+          <a class="pillar" href="/work.html#improve" data-tilt>
             <span class="pillar-step" aria-hidden="true"><i></i><i></i><i></i></span>
             <h3>Improve it</h3>
             <p>I find the leak in the numbers, then build the reporting and process to fix it.</p>
@@ -140,42 +186,40 @@
             <span class="pillar-go">See improvement work</span>
           </a>
         </div>
-      </div>
-    </section>
-
-    <section class="clients" aria-label="Brands I have delivered for">
-      <div class="wrap clients-inner">
-        <p class="clients-label">Delivered data work for</p>
-        <ul><li>PIMCO</li><li>Yamaha</li><li>Toyota</li><li>Dell</li><li>PMI</li><li>HealthHub</li></ul>
+        <div class="clients clients-inner">
+          <p class="clients-label">Delivered data work for</p>
+          <ul><li>PIMCO</li><li>Yamaha</li><li>Toyota</li><li>Dell</li><li>PMI</li><li>HealthHub</li></ul>
+        </div>
       </div>
     </section>
 
     <!-- ============ FEATURED WORK ============ -->
-    <section class="section section-tint" aria-labelledby="work-title">
+    <section class="section" aria-labelledby="work-title">
       <div class="wrap">
         <div class="head-row">
           <header class="section-head">
-            <h2 id="work-title">Selected work</h2>
-            <p>Three of the six case summaries on my work page.</p>
+            <span class="lvl">Selected work</span>
+            <h2 id="work-title">Three case summaries</h2>
+            <p>Three of the six on my work page.</p>
           </header>
           <a class="text-link" href="/work.html">All case studies</a>
         </div>
-        <div class="cases cases-3">
-          <a class="case-card" href="/work.html#sof">
+        <div class="cases cases-3" data-reveal>
+          <a class="case-card" href="/work.html#sof" data-tilt>
             <span class="case-top"><span data-logo="daraz" class="logo-md"></span><span><b>Daraz (Alibaba Group)</b>Seller Own Fleet</span></span>
             <span class="case-metric">BDT 40K</span>
             <h3>Stopping a daily revenue leak in a programme worth ~10% of GMV</h3>
             <p>New governance, SOPs and AI-assisted reporting recovered BDT 40K a day and cut SLA breaches from 200 to 60 a day.</p>
             <span class="case-more">Read the summary</span>
           </a>
-          <a class="case-card" href="/work.html#pimco">
+          <a class="case-card" href="/work.html#pimco" data-tilt>
             <span class="case-top"><span data-logo="wpp" class="logo-md"></span><span><b>WPP Production</b>PIMCO, APAC and EMEA</span></span>
             <span class="case-metric">50% faster</span>
             <h3>Moving global BI delivery from waterfall to Agile</h3>
             <p>30+ BI solutions in 25 countries, with dashboards delivered in half the time.</p>
             <span class="case-more">Read the summary</span>
           </a>
-          <a class="case-card" href="/work.html#ifarmer">
+          <a class="case-card" href="/work.html#ifarmer" data-tilt>
             <span class="case-top"><span data-logo="ifarmer" class="logo-md"></span><span><b>iFarmer</b>5 platforms, 150K+ users</span></span>
             <span class="case-metric">60→90%</span>
             <h3>Making three teams deliver what they promise</h3>
@@ -186,15 +230,29 @@
       </div>
     </section>
 
+    <!-- ============ CAREER PLAN ============ -->
+    <section class="section on-navy blueprint px-top px-bottom" aria-labelledby="plan-title">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="lvl">Career plan</span>
+          <h2 id="plan-title">Five roles, one direction</h2>
+          <p>The timeline updates itself as the months pass. Hover a bar for the highlight.</p>
+        </header>
+        <!-- The timeline draws itself from /assets/js/career-data.js -->
+        <figure class="plan hero-plan" data-timeline aria-label="Career timeline" style="margin-top:0"></figure>
+      </div>
+    </section>
+
     <!-- ============ EXPLORE ============ -->
     <section class="section" aria-labelledby="explore-title">
       <div class="wrap">
         <header class="section-head">
+          <span class="lvl">Side quests</span>
           <h2 id="explore-title">Beyond the job title</h2>
           <p>Where the analytical habits came from, and what I do when the laptop closes.</p>
         </header>
         <div class="explore">
-          <a class="tile" href="/academics.html">
+          <a class="tile" href="/academics.html" data-tilt="3">
             <svg class="tile-art" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#7593FF" stroke-opacity=".35"><path d="M0 260 C120 200 180 120 300 140 S480 60 600 40"/><path d="M0 300 C140 250 220 200 330 210 S500 150 600 130" stroke="#E0A01A" stroke-opacity=".5"/></g><g fill="#fff" fill-opacity=".14" font-family="Georgia,serif" font-size="34"><text x="40" y="70">∑</text><text x="470" y="250">∫</text><text x="300" y="80">σ²</text><text x="140" y="190">P(A|B)</text></g></svg>
             <div class="tile-body">
               <h3>Academics</h3>
@@ -202,13 +260,13 @@
               <span class="tile-go">Explore academics</span>
             </div>
           </a>
-          <a class="tile" href="/about.html">
+          <a class="tile" href="/about.html" data-tilt="3">
             <!-- PHOTO: /assets/photos/home-tile.jpg -->
             <div class="tile-media" data-photo-frame><img data-photo src="/assets/photos/home-tile.jpg" alt="" loading="lazy"></div>
             <div class="tile-body">
               <h3>About me</h3>
-              <p>A full marathon, five table-tennis titles, and years of writing and moderating for gaming communities.</p>
-              <span class="tile-go">Meet me</span>
+              <p>A full marathon, five table-tennis titles, years of gaming writing, and the shelf of books, films and games behind it all.</p>
+              <span class="tile-go">Meet <span class="px">ashaxel</span></span>
             </div>
           </a>
         </div>
@@ -229,6 +287,7 @@
           <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
+        <img class="contact-sprite" src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
       </div>
     </section>
   </main>
@@ -268,7 +327,7 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka</p>
+      <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka <button class="text-btn konami-hint" type="button" data-eightbit aria-label="Toggle 8-bit mode">↑↑↓↓←→←→BA</button></p>
       <ul class="footer-links">
         <li><a href="/work.html">Work</a></li>
         <li><a href="/career.html">Career</a></li>

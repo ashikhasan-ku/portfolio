@@ -56,6 +56,23 @@ To swap a photo, save the new one with the same name. To change a caption, edit 
 
 Keep each photo under ~300 KB (squoosh.app does this in the browser).
 
+## The 8-bit layer (v3)
+
+The site is "professional first, pixel second". Where each pixel piece lives:
+
+| What | File and where to edit |
+|---|---|
+| Pixel avatar | `assets/photos/avatar-pixel.png` (40×50 px, made from the headshot). Replace it with any 40×50 PNG; the browser scales it up crisply. |
+| Hero title artwork (ring O, Gantt A) | `index.html`, inside `<h1 class="title-art">` |
+| CSM sticker, `> ashaxel` gamer tag | `index.html` and `about.html`, search for `sticker` |
+| Scoreboard (best result per company) | `index.html`, section `score`. One `score-card` per company |
+| Bookshelf, tickets, tapes, manga, game discs | `about.html`, section `shelf-title`. Copy a `<li>` to add a title; `--c` sets its colour |
+| RPG dialogue box | `about.html`, the three `<p data-line>` lines and the three buttons under them |
+| Page transition, scroll meter, 8-bit mode | `assets/js/site.js`, the "v3" block at the bottom |
+
+Hidden extra: type ↑ ↑ ↓ ↓ ← → ← → B A on any page (or click the arrows in the footer) to switch on 8-bit mode.
+Everything moving respects the visitor's "reduce motion" setting.
+
 ## Preview on your computer
 
 ```

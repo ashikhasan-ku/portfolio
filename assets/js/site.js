@@ -99,7 +99,7 @@
 
     host.innerHTML =
       '<figcaption class="plan-caption"><span>Career plan, ' + startYear + ' to today</span>' +
-      '<span class="plan-legend"><i class="lg-bar" aria-hidden="true"></i>Role<i class="lg-ms" aria-hidden="true"></i>Milestone' + (compact ? '' : '<i class="lg-today" aria-hidden="true"></i>Today') + '</span></figcaption>' +
+      '<span class="plan-legend"><i class="lg-bar" aria-hidden="true"></i>Role<i class="lg-ms" aria-hidden="true"></i>Milestone' + (compact ? '' : '<span class="lg-t"><i class="lg-today" aria-hidden="true"></i>Today</span>') + '</span></figcaption>' +
       '<div class="plan-body" style="--years:' + (endYear - startYear) + '">' +
       '<ol class="plan-axis" aria-hidden="true">' + years.join('') + '</ol>' +
       '<ol class="plan-rows">' + rows + '</ol>' +
@@ -339,5 +339,175 @@
         navigator.clipboard.writeText(text).then(done, function () { if (status) status.textContent = 'Copy failed. The address is ' + text + '.'; });
       } else if (status) status.textContent = 'The address is ' + text + '.';
     });
+  });
+
+  /* =========================================================
+     v3: motion and play. Everything here is decoration: the
+     site works without it, and reduced-motion turns it off.
+     ========================================================= */
+  var finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+
+  /* ---------- Pixel dissolve between pages (ordered Bayer dither) ---------- */
+  var BAYER = [0,32,8,40,2,34,10,42,48,16,56,24,50,18,58,26,12,44,4,36,14,46,6,38,60,28,52,20,62,30,54,22,3,35,11,43,1,33,9,41,51,19,59,27,49,17,57,25,15,47,7,39,13,45,5,37,63,31,55,23,61,29,53,21];
+  function curtain(direction, done) {           // direction 1 = cover, -1 = uncover
+    var cv = document.createElement('canvas'); cv.className = 'px-curtain'; cv.setAttribute('aria-hidden', 'true');
+    var dpr = 1, cell = 24, w = Math.ceil(innerWidth / cell), h = Math.ceil(innerHeight / cell);
+    cv.width = w * cell * dpr; cv.height = h * cell * dpr;
+    document.body.appendChild(cv);
+    var ctx = cv.getContext('2d'), t0 = null, dur = direction > 0 ? 360 : 460;
+    var col = getComputedStyle(root).getPropertyValue('--navy').trim() || '#0D1730';
+    var frame = function (t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / dur), lvl = direction > 0 ? p : 1 - p;
+      ctx.clearRect(0, 0, cv.width, cv.height); ctx.fillStyle = col;
+      for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+        if ((BAYER[(y % 8) * 8 + (x % 8)] + 0.5) / 64 < lvl) ctx.fillRect(x * cell, y * cell, cell, cell);
+      }
+      if (p < 1) requestAnimationFrame(frame); else { if (direction < 0) cv.remove(); if (done) done(); }
+    };
+    requestAnimationFrame(frame);
+    return cv;
+  }
+  if (root.classList.contains('px-enter')) {
+    if (reduceMotion) root.classList.remove('px-enter');
+    else { curtain(-1); root.classList.remove('px-enter'); }
+  }
+  if (!reduceMotion) {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (a.target === '_blank' || a.hasAttribute('download')) return;
+      var url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || /^mailto:|^tel:/.test(a.href)) return;
+      if (url.pathname === location.pathname && url.hash) return;        // same-page anchor
+      if (!/(\.html|\/)$/.test(url.pathname)) return;
+      e.preventDefault();
+      try { sessionStorage.setItem('pxnav', '1'); } catch (err) {}
+      curtain(1, function () { location.href = url.href; });
+    });
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) document.querySelectorAll('.px-curtain').forEach(function (c) { c.remove(); });
+    });
+  }
+
+  /* ---------- Quest HUD: segmented progress bar + back-to-top chip ---------- */
+  if (header) {
+    var hud = document.createElement('div'); hud.className = 'hud'; hud.setAttribute('aria-hidden', 'true'); hud.innerHTML = '<i></i>';
+    header.appendChild(hud);
+    var chip = document.createElement('button');
+    chip.type = 'button'; chip.className = 'hud-chip';
+    var pageName = (document.body.dataset.page || 'Home');
+    chip.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1 11 7H8v4H4V7H1z"/></svg><span>' + pageName + '</span><span class="meter" aria-hidden="true"></span>';
+    chip.setAttribute('aria-label', 'Back to top');
+    chip.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); });
+    document.body.appendChild(chip);
+    var tick = false;
+    var updateHud = function () {
+      tick = false;
+      var max = document.documentElement.scrollHeight - innerHeight, p = max > 0 ? Math.min(1, scrollY / max) : 0;
+      p = Math.round(p * 20) / 20;                                       // 5% steps, like a game meter
+      root.style.setProperty('--p', p);
+      chip.classList.toggle('show', scrollY > innerHeight * 0.8);
+    };
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(updateHud); } }, { passive: true });
+    updateHud();
+  }
+
+  /* ---------- Pixel-blind reveals on a few groups ---------- */
+  var reveals = document.querySelectorAll('[data-reveal]');
+  reveals.forEach(function (g) { Array.prototype.forEach.call(g.children, function (c, i) { c.style.setProperty('--d', i); }); });
+  if (reduceMotion || !('IntersectionObserver' in window)) reveals.forEach(function (g) { g.classList.add('in'); });
+  else {
+    var rv = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); rv.unobserve(x.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (g) { rv.observe(g); });
+  }
+
+  /* ---------- Cursor spotlight + gentle tilt (mouse only) ---------- */
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll('[data-tilt]').forEach(function (card) {
+      card.classList.add('has-spot');
+      var spot = document.createElement('span'); spot.className = 'spot'; spot.setAttribute('aria-hidden', 'true'); card.prepend(spot);
+      var max = parseFloat(card.dataset.tilt) || 4;
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--mx', (x * 100) + '%'); card.style.setProperty('--my', (y * 100) + '%');
+        card.style.transform = 'perspective(900px) rotateX(' + ((0.5 - y) * max) + 'deg) rotateY(' + ((x - 0.5) * max) + 'deg) translateY(-3px)';
+      });
+      card.addEventListener('pointerleave', function () { card.style.transform = ''; });
+    });
+  }
+
+  /* ---------- Avatar: pixel sprite flips to the photo ---------- */
+  /* the photo behind the sprite loads after the page settles, so it never slows the first paint */
+  var loadBack = function () { document.querySelectorAll('.face-photo img[data-src]').forEach(function (i) { i.src = i.dataset.src; i.removeAttribute('data-src'); }); };
+  window.addEventListener('load', function () {          // warm the cache without painting it
+    setTimeout(function () { document.querySelectorAll('.face-photo img[data-src]').forEach(function (i) { new Image().src = i.dataset.src; }); }, 1200);
+  });
+  document.querySelectorAll('[data-flip]').forEach(function (btn) {
+    ['pointerenter', 'focus', 'touchstart'].forEach(function (ev) { btn.addEventListener(ev, loadBack, { passive: true, once: true }); });
+    var set = function (on) {
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? 'Show the pixel version' : 'Show the photo');
+    };
+    btn.addEventListener('click', function (e) {
+      if (finePointer && e.detail > 0) return;                      // mouse users flip on hover; keyboard and touch use click
+      set(btn.getAttribute('aria-pressed') !== 'true');
+    });
+    if (finePointer) {
+      btn.addEventListener('mouseenter', function () { set(true); });
+      btn.addEventListener('mouseleave', function () { set(false); });
+    }
+    set(false);
+  });
+
+  /* ---------- RPG dialogue box (About) ---------- */
+  document.querySelectorAll('[data-dialogue]').forEach(function (box) {
+    var lines = Array.prototype.slice.call(box.querySelectorAll('[data-line]'));
+    var btns = Array.prototype.slice.call(box.parentElement.querySelectorAll('[data-say]'));
+    var typing = null;
+    var show = function (i, animate) {
+      lines.forEach(function (l, j) { l.hidden = j !== i; });
+      btns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+      var l = lines[i], full = l.dataset.full || (l.dataset.full = l.textContent);
+      clearInterval(typing);
+      if (!animate || reduceMotion) { l.textContent = full; return; }
+      var n = 0; l.textContent = '';
+      typing = setInterval(function () { n += 2; l.textContent = full.slice(0, n); if (n >= full.length) clearInterval(typing); }, 18);
+    };
+    btns.forEach(function (b, j) { b.addEventListener('click', function () { show(j, true); }); });
+    var started = false;
+    var start = function () { if (!started) { started = true; show(0, true); } };
+    show(0, false);
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      lines[0].dataset.full = lines[0].textContent;
+      var dio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { start(); dio.disconnect(); } }, { threshold: 0.5 });
+      dio.observe(box);
+    }
+  });
+
+  /* ---------- Konami code: ↑ ↑ ↓ ↓ ← → ← → B A toggles 8-bit mode ---------- */
+  var KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'], kpos = 0;
+  var toast = function (msg) {
+    var t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); t.textContent = msg;
+    document.body.appendChild(t); setTimeout(function () { t.remove(); }, 2200);
+  };
+  var setEight = function (on) {
+    root.classList.toggle('eightbit', on);
+    try { on ? sessionStorage.setItem('eightbit', '1') : sessionStorage.removeItem('eightbit'); } catch (e) {}
+  };
+  try { if (sessionStorage.getItem('eightbit')) root.classList.add('eightbit'); } catch (e) {}
+  document.addEventListener('keydown', function (e) {
+    var k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    kpos = (k === KONAMI[kpos]) ? kpos + 1 : (k === KONAMI[0] ? 1 : 0);
+    if (kpos === KONAMI.length) {
+      kpos = 0;
+      var on = !root.classList.contains('eightbit');
+      setEight(on); toast(on ? '8-BIT MODE ON. PRESS IT AGAIN TO LEAVE' : '8-BIT MODE OFF');
+    }
+  });
+  document.querySelectorAll('[data-eightbit]').forEach(function (b) {
+    b.addEventListener('click', function () { var on = !root.classList.contains('eightbit'); setEight(on); toast(on ? '8-BIT MODE ON' : '8-BIT MODE OFF'); });
   });
 })();

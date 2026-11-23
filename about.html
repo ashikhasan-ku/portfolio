@@ -22,9 +22,16 @@
   <link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
-  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preload" href="/assets/fonts/silkscreen-700.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    try {
+      var d = document.documentElement, t = localStorage.getItem('theme'); if (t) d.dataset.theme = t;
+      if (sessionStorage.getItem('pxnav')) { sessionStorage.removeItem('pxnav');
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { d.classList.add('px-enter'); setTimeout(function () { d.classList.remove('px-enter'); }, 1500); } }
+    } catch (e) {}
+  </script>
 </head>
-<body class="">
+<body class="navy-head" data-page="About">
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
@@ -50,50 +57,33 @@
   </header>
 
   <main id="main">
-    <section class="page-hero" aria-labelledby="page-title">
-      <div class="wrap about-hero">
-        <div>
-          <h1 id="page-title" class="page-title">Hi, I’m Ashik.</h1>
-          <div class="story" style="margin-top:1.5rem">
-            <p>Project manager by profession, curious explorer by nature.</p>
-            <p>I studied mathematics at Khulna University, started my career reading product data at Bdjobs, and have spent the years since between users, data and engineering teams, turning “we need something” into a plan people can follow.</p>
-            <p>Outside work I run long distances, play table tennis competitively and football for fun, and have spent years writing and moderating for gaming communities.</p>
-          </div>
-        </div>
-        <!-- PHOTO: /assets/photos/about.jpg (portrait, 800×1000) -->
-        <figure class="portrait">
-          <div class="portrait-frame" data-photo-frame>
-            <img data-photo src="/assets/photos/about.jpg" alt="Ashik on a forest road, giving a peace sign" width="800" height="1000">
-            <div class="portrait-art" aria-hidden="true"><span class="mono-big">AH</span><span class="bars"><i></i><i></i><i></i></span></div>
-          </div>
-          <figcaption><b>Dhaka, Bangladesh</b><span>Runner, player, writer</span></figcaption>
+    <section class="ph ph-about on-navy blueprint px-bottom" aria-labelledby="page-title">
+      <div class="wrap about-v3">
+        <!-- AVATAR: pixel sprite flips to /assets/photos/about.jpg -->
+        <figure class="avatar">
+          <button class="flip" type="button" data-flip aria-pressed="false" aria-label="Show the photo">
+            <span class="flip-inner">
+              <span class="face face-px"><span class="hp-bar" aria-hidden="true">P1<i></i></span><img src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" fetchpriority="high"></span>
+              <span class="face face-photo"><img data-src="/assets/photos/about.jpg" alt="Ashik on a forest road, giving a peace sign" width="800" height="1000" fetchpriority="low" decoding="async"></span>
+            </span>
+          </button>
+          <span class="sticker sticker-tag" aria-hidden="true">&gt; <b>ashaxel</b><i class="caret"></i></span>
+          <figcaption><b>Dhaka, Bangladesh</b><span class="flip-hint">Tap to flip</span></figcaption>
         </figure>
-      </div>
-    </section>
-
-    <!-- ============ RUNNING ============ -->
-    <section class="section on-navy blueprint" aria-labelledby="run-title">
-      <div class="wrap run">
         <div>
-          <h2 id="run-title" class="run-big">42.2<small>kilometres. A full marathon finisher, running with Comfit Run Club.</small></h2>
-          <ul class="distances" aria-label="Race distances completed">
-            <li><b>42.2K</b><span>Full marathon</span></li>
-            <li><b>21.1K</b><span>Half marathons, several</span></li>
-            <li><b>25K</b><span>25 kilometres</span></li>
-            <li><b>15K</b><span>15 kilometres</span></li>
-          </ul>
-        </div>
-        <!-- Race deck: click, swipe or use the arrow keys to shuffle. PHOTOS: run-*.jpg -->
-        <div class="deck" data-deck aria-roledescription="photo deck" aria-label="Race-day photos">
-          <div class="deck-stack">
-            <figure class="deck-card"><img src="/assets/photos/run-marathon.jpg" alt="Ashik with his finisher medal at the Dhaka International Marathon 2025" width="1000" height="1000"><figcaption>Finisher, Dhaka International Marathon 2025</figcaption></figure>
-            <figure class="deck-card"><img src="/assets/photos/run-teatrail.jpg" alt="Ashik running a trail race in a Comfit Run Club shirt" width="720" height="900" loading="lazy"><figcaption>Race day with Comfit Run Club</figcaption></figure>
-            <figure class="deck-card"><img src="/assets/photos/run-ucr.jpg" alt="Ashik giving a peace sign mid-race on a city road" width="720" height="900" loading="lazy"><figcaption>Mid-race, still smiling</figcaption></figure>
+          <p class="p1"><span>Player 1</span><span class="gt">&gt; ashaxel</span></p>
+          <h1 id="page-title" class="page-title">Hi, I’m Ashik.</h1>
+          <div class="dialog-box" data-dialogue>
+            <span class="who">Ashik</span>
+            <p data-line>Project manager by profession, curious explorer by nature.</p>
+            <p data-line>I studied mathematics at Khulna University, started my career reading product data at Bdjobs, and have spent the years since between users, data and engineering teams, turning “we need something” into a plan people can follow.</p>
+            <p data-line>Outside work I run long distances, play table tennis competitively and football for fun, read, watch series, and have spent years writing and moderating for gaming communities.</p>
+            <span class="more" aria-hidden="true"></span>
           </div>
-          <div class="deck-controls">
-            <button class="icon-btn" type="button" data-deck-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-            <p class="deck-count" aria-live="polite">1 / 3</p>
-            <button class="icon-btn" type="button" data-deck-next aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          <div class="dialog-nav" role="group" aria-label="Choose what Ashik talks about">
+            <button class="dlg-btn" type="button" data-say>Who I am</button>
+            <button class="dlg-btn" type="button" data-say>The road here</button>
+            <button class="dlg-btn" type="button" data-say>Off the clock</button>
           </div>
         </div>
       </div>
@@ -103,6 +93,7 @@
     <section class="section" aria-labelledby="sport-title">
       <div class="wrap">
         <header class="section-head">
+          <span class="lvl">Sport</span>
           <h2 id="sport-title">On the pitch and at the table</h2>
           <p>Table tennis is where I compete. Football is where I show up for the team.</p>
         </header>
@@ -129,13 +120,47 @@
       </div>
     </section>
 
+    <!-- ============ RUNNING ============ -->
+    <section class="section on-navy blueprint px-top px-bottom next-tint" aria-labelledby="run-title">
+      <div class="wrap run">
+        <div>
+          <h2 id="run-title" class="run-big">42.2<small>kilometres. A full marathon finisher, running with Comfit Run Club.</small></h2>
+          <ul class="distances" aria-label="Race distances completed">
+            <li><b>42.2K</b><span>Full marathon</span></li>
+            <li><b>21.1K</b><span>Half marathons, several</span></li>
+            <li><b>25K</b><span>25 kilometres</span></li>
+            <li><b>15K</b><span>15 kilometres</span></li>
+          </ul>
+        </div>
+        <!-- Race deck: click, swipe or use the arrow keys to shuffle. PHOTOS: run-*.jpg -->
+        <div class="deck" data-deck aria-roledescription="photo deck" aria-label="Race-day photos">
+          <div class="deck-stack">
+            <figure class="deck-card"><img src="/assets/photos/run-marathon.jpg" alt="Ashik with his finisher medal at the Dhaka International Marathon 2025" width="1000" height="1000" loading="lazy"><figcaption>Finisher, Dhaka International Marathon 2025</figcaption></figure>
+            <figure class="deck-card"><img src="/assets/photos/run-teatrail.jpg" alt="Ashik running a trail race in a Comfit Run Club shirt" width="720" height="900" loading="lazy"><figcaption>Race day with Comfit Run Club</figcaption></figure>
+            <figure class="deck-card"><img src="/assets/photos/run-ucr.jpg" alt="Ashik giving a peace sign mid-race on a city road" width="720" height="900" loading="lazy"><figcaption>Mid-race, still smiling</figcaption></figure>
+          </div>
+          <div class="deck-controls">
+            <button class="icon-btn" type="button" data-deck-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <p class="deck-count" aria-live="polite">1 / 3</p>
+            <button class="icon-btn" type="button" data-deck-next aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ GAMING: WRITING AND COMMUNITY ============ -->
-    <section class="section section-tint" aria-labelledby="play-title">
+    <section class="section band band-tint" aria-labelledby="play-title">
       <div class="wrap">
         <header class="section-head">
+          <span class="lvl">Player profile</span>
           <h2 id="play-title">Games, words and communities</h2>
           <p>Gaming is where I learned to write for an audience, design for players, and moderate busy communities.</p>
         </header>
+        <div class="gamertag">
+          <img src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
+          <div><p class="gt-name">ashaxel</p><span class="gt-sub">My handle in every game, and my byline in gaming communities.</span></div>
+          <div class="gt-stats"><span>CLASS <b>WRITER</b></span><span>GUILDS <b>4</b></span><span>RANK <b>MASTER</b></span></div>
+        </div>
         <div class="play">
           <div class="shelf-card feature">
             <p class="bn" lang="bn">বাংলায় খেলুন</p>
@@ -156,10 +181,6 @@
             <h3>GameRiv</h3>
             <p>Guide Editor.</p>
           </div>
-          <div class="shelf-card">
-            <h3>On the shelf</h3>
-            <p>PlayStation 4, Nintendo Switch Lite, Nintendo 3DS, and a Kobo Libra Color for reading.</p>
-          </div>
         </div>
         <div class="strip" data-gallery style="margin-top:1.25rem">
           <figure><img src="/assets/photos/game-switch.jpg" alt="A Nintendo Switch Lite showing Pokémon Legends: Arceus, held up in front of a lake" width="1000" height="750" loading="lazy"><figcaption>Pokémon Legends: Arceus, by the lake</figcaption></figure>
@@ -169,10 +190,70 @@
       </div>
     </section>
 
-    <!-- ============ MOMENTS ============ -->
-    <section class="section" aria-labelledby="gallery-title">
+    <!-- ============ THE SHELF: titles only, original artwork ============ -->
+    <section class="section" aria-labelledby="shelf-title">
       <div class="wrap">
-        <header class="section-head"><h2 id="gallery-title">Moments</h2><p>Beaches, forests and water. Select a photo to see it larger.</p></header>
+        <header class="section-head">
+          <span class="lvl">Inventory</span>
+          <h2 id="shelf-title">The shelf</h2>
+          <p>Books, films, series, anime and games I come back to. Hover or tap around.</p>
+        </header>
+        <div class="shelves">
+          <div class="shelf-row half">
+            <div><span class="kind">Books</span><h3>On the bookshelf</h3><p class="note">Read mostly on a Kobo Libra Color.</p></div>
+            <ul class="books" aria-label="Books">
+              <li class="book" style="--c:#1F6F4A;--h:200px;--w:50px"><span>Norwegian Wood</span><small>MURAKAMI</small></li>
+              <li class="book" style="--c:#E9E4D8;--t:#1B1B1B;--h:176px;--w:42px"><span>Minimalist</span><small>HAQUE</small></li>
+              <li class="book" style="--c:#B5462E;--h:210px;--w:54px"><span>Chander Pahar</span><small>BIBHUTI</small></li>
+              <li class="book lean" style="--c:#2D3B6E;--h:192px;--w:50px"><span>The People of the Mist</span><small>HAGGARD</small></li>
+            </ul>
+          </div>
+          <div class="shelf-row half">
+            <div><span class="kind">Anime</span><h3>Manga shelf</h3></div>
+            <ul class="manga" aria-label="Anime">
+              <li class="vol" style="--c:#4F8FB8;--h:180px"><i class="band-top"></i><span>Frieren</span><i class="no">23</i></li>
+              <li class="vol" style="--c:#E0731A;--h:180px"><i class="band-top"></i><span>Naruto</span><i class="no">02</i></li>
+              <li class="vol" style="--c:#A32020;--h:180px"><i class="band-top"></i><span>Fullmetal Alchemist: Brotherhood</span><i class="no">09</i></li>
+              <li class="vol" style="--c:#1B1B1B;--h:180px"><i class="band-top"></i><span>Death Note</span><i class="no">06</i></li>
+            </ul>
+          </div>
+          <div class="shelf-row">
+            <div><span class="kind">Movies</span><h3>Ticket stubs</h3></div>
+            <ul class="tickets" aria-label="Movies">
+              <li class="ticket" style="--c:#F7E7C6"><span class="t-main"><span class="t-adm">ADMIT ONE</span><b>The Lord of the Rings</b></span><span class="t-stub">2001</span></li>
+              <li class="ticket" style="--c:#F6D2CC"><span class="t-main"><span class="t-adm">ADMIT ONE</span><b>The Amazing Spider-Man</b></span><span class="t-stub">2012</span></li>
+              <li class="ticket" style="--c:#DDE5CF"><span class="t-main"><span class="t-adm">ADMIT ONE</span><b>Saving Private Ryan</b></span><span class="t-stub">1998</span></li>
+              <li class="ticket" style="--c:#E4E1F2"><span class="t-main"><span class="t-adm">ADMIT ONE</span><b>The Pianist</b></span><span class="t-stub">2002</span></li>
+            </ul>
+          </div>
+          <div class="shelf-row">
+            <div><span class="kind">Series</span><h3>On tape</h3></div>
+            <ul class="tapes" aria-label="Series">
+              <li class="tape" style="--c:#8E2B22"><span class="label"><b>The Walking Dead</b><span>SERIES · 2010</span></span><span class="reels" aria-hidden="true"><i></i><i></i></span></li>
+              <li class="tape" style="--c:#2D55E6"><span class="label"><b>The Big Bang Theory</b><span>SERIES · 2007</span></span><span class="reels" aria-hidden="true"><i></i><i></i></span></li>
+              <li class="tape" style="--c:#5A6B3A"><span class="label"><b>Band of Brothers</b><span>MINISERIES · 2001</span></span><span class="reels" aria-hidden="true"><i></i><i></i></span></li>
+              <li class="tape" style="--c:#7A6A4F"><span class="label"><b>Game of Thrones</b><span>SERIES · 2011</span></span><span class="reels" aria-hidden="true"><i></i><i></i></span></li>
+            </ul>
+          </div>
+          <div class="shelf-row">
+            <div><span class="kind">Games</span><h3>Disc collection</h3><p class="note">Played on PlayStation 4, Nintendo Switch Lite and Nintendo 3DS these days.</p></div>
+            <ul class="discs" aria-label="Favourite games">
+              <li class="disc-item"><span class="disc" style="--c1:#2E8B57;--c2:#9FE2BF" aria-hidden="true"></span><b>Pokémon Emerald</b><span class="plat">2004</span></li>
+              <li class="disc-item"><span class="disc" style="--c1:#1C3D73;--c2:#E0A01A" aria-hidden="true"></span><b>Mass Effect 2</b><span class="plat">2010</span></li>
+              <li class="disc-item"><span class="disc" style="--c1:#3A3A3A;--c2:#E3622B" aria-hidden="true"></span><b>Call of Duty: Black Ops</b><span class="plat">2010</span></li>
+              <li class="disc-item"><span class="disc" style="--c1:#5B2E22;--c2:#D8C3A5" aria-hidden="true"></span><b>The Walking Dead series</b><span class="plat">2012</span></li>
+              <li class="disc-item"><span class="disc" style="--c1:#2F4A3A;--c2:#C9B27A" aria-hidden="true"></span><b>The Last of Us</b><span class="plat">2013</span></li>
+              <li class="disc-item"><span class="disc" style="--c1:#0F5132;--c2:#7FD1AE" aria-hidden="true"></span><b>FIFA 14</b><span class="plat">2013</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MOMENTS ============ -->
+    <section class="section band band-tint" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <header class="section-head"><span class="lvl">Save points</span><h2 id="gallery-title">Moments</h2><p>Beaches, forests and water. Select a photo to see it larger.</p></header>
         <div class="masonry" data-gallery>
           <figure><img src="/assets/photos/gallery-1.jpg" alt="Ashik on a beach at sunset, looking out to sea" width="930" height="697" loading="lazy"></figure>
           <figure><img src="/assets/photos/gallery-2.jpg" alt="Ashik smiling in a thatched-hut doorway, wearing a gaming jersey" width="750" height="1000" loading="lazy"></figure>
@@ -197,6 +278,7 @@
           <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
+        <img class="contact-sprite" src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
       </div>
     </section>
   </main>
@@ -236,7 +318,7 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka</p>
+      <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka <button class="text-btn konami-hint" type="button" data-eightbit aria-label="Toggle 8-bit mode">↑↑↓↓←→←→BA</button></p>
       <ul class="footer-links">
         <li><a href="/work.html">Work</a></li>
         <li><a href="/career.html">Career</a></li>

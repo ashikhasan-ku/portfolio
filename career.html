@@ -22,9 +22,16 @@
   <link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
-  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preload" href="/assets/fonts/silkscreen-700.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    try {
+      var d = document.documentElement, t = localStorage.getItem('theme'); if (t) d.dataset.theme = t;
+      if (sessionStorage.getItem('pxnav')) { sessionStorage.removeItem('pxnav');
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { d.classList.add('px-enter'); setTimeout(function () { d.classList.remove('px-enter'); }, 1500); } }
+    } catch (e) {}
+  </script>
 </head>
-<body class="">
+<body class="navy-head" data-page="Career">
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
@@ -50,17 +57,21 @@
   </header>
 
   <main id="main">
-    <section class="page-hero" aria-labelledby="page-title">
+    <section class="ph ph-career on-navy blueprint px-bottom" aria-labelledby="page-title">
       <div class="wrap">
+        <span class="lvl ph-tag">Career plan</span>
         <h1 id="page-title" class="page-title">From product analytics to leading delivery</h1>
         <p class="page-lede"><span data-exp="cap">5+ years</span> across product, data, operations and delivery. Each role added a layer: understanding users, running Scrum teams, delivering data at scale, fixing operations with numbers, and now owning projects end to end.</p>
+        <ul class="ph-stats" aria-label="Career at a glance">
+          <li><b>5</b>companies</li>
+          <li><b>1</b>promotion, at WPP</li>
+          <li><b>CSM</b>Scrum Alliance, 2025</li>
+          <li><b>25</b>countries served at WPP</li>
+        </ul>
+        <!-- The timeline draws itself from /assets/js/career-data.js -->
+        <figure class="plan" data-timeline data-link="anchor" aria-label="Career timeline"></figure>
       </div>
     </section>
-
-    <div class="wrap">
-      <!-- The timeline draws itself from /assets/js/career-data.js -->
-      <figure class="plan" data-timeline data-link="anchor" aria-label="Career timeline"></figure>
-    </div>
 
     <section class="section" aria-label="Roles">
       <div class="wrap career-layout">
@@ -220,7 +231,7 @@
               <a href="#ifarmer"><b>Fintech and agritech</b><span>iFarmer</span></a>
               <a href="#wpp"><b>Data and BI</b><span>WPP Production</span></a>
               <a href="#bs23"><b>Learning platforms</b><span>Brain Station 23</span></a>
-              <a href="#bs23"><b>Cybersecurity and QA</b><span>Brain Station 23</span></a>
+              <a href="#bs23"><b>Website development and cloud</b><span>Brain Station 23</span></a>
               <a href="#bs23"><b>SaaS products</b><span>Brain Station 23</span></a>
               <a href="#bdjobs"><b>Job platforms and UX</b><span>Bdjobs.com</span></a>
             </div>
@@ -253,6 +264,7 @@
           <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
+        <img class="contact-sprite" src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
       </div>
     </section>
   </main>
@@ -292,7 +304,7 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka</p>
+      <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka <button class="text-btn konami-hint" type="button" data-eightbit aria-label="Toggle 8-bit mode">↑↑↓↓←→←→BA</button></p>
       <ul class="footer-links">
         <li><a href="/work.html">Work</a></li>
         <li><a href="/career.html">Career</a></li>

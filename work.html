@@ -22,9 +22,16 @@
   <link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
-  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preload" href="/assets/fonts/silkscreen-700.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    try {
+      var d = document.documentElement, t = localStorage.getItem('theme'); if (t) d.dataset.theme = t;
+      if (sessionStorage.getItem('pxnav')) { sessionStorage.removeItem('pxnav');
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { d.classList.add('px-enter'); setTimeout(function () { d.classList.remove('px-enter'); }, 1500); } }
+    } catch (e) {}
+  </script>
 </head>
-<body class="">
+<body class="navy-head" data-page="Work">
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
@@ -50,15 +57,38 @@
   </header>
 
   <main id="main">
-    <section class="page-hero" aria-labelledby="page-title">
-      <div class="wrap">
-        <h1 id="page-title" class="page-title">Work that shipped</h1>
-        <p class="page-lede">Six short summaries. Each one shows why the project mattered, what I owned, what I did, and what changed. Client data stays confidential, so the focus is on decisions and outcomes.</p>
-        <nav class="jump" aria-label="Jump to a pillar">
-          <a href="#scope"><b>Scope it</b><span>1 case</span></a>
-          <a href="#ship"><b>Ship it</b><span>3 cases</span></a>
-          <a href="#improve"><b>Improve it</b><span>2 cases</span></a>
-        </nav>
+    <section class="ph on-navy blueprint px-bottom" aria-labelledby="page-title">
+      <div class="wrap ph-grid">
+        <div>
+          <span class="lvl ph-tag">Case files</span>
+          <h1 id="page-title" class="page-title">Work that shipped</h1>
+          <p class="page-lede">Six short summaries. Each one shows why the project mattered, what I owned, what I did, and what changed. Client data stays confidential, so the focus is on decisions and outcomes.</p>
+          <nav class="jump" aria-label="Jump to a pillar">
+            <a href="#scope"><b>Scope it</b><span>1 case</span></a>
+            <a href="#ship"><b>Ship it</b><span>3 cases</span></a>
+            <a href="#improve"><b>Improve it</b><span>2 cases</span></a>
+          </nav>
+        </div>
+        <div class="files" aria-label="Three headline results">
+          <a class="file" href="#pimco" >
+            <span class="f-tab">File 02</span>
+            <span class="f-co"><span data-logo="wpp"></span>WPP Production</span>
+            <span class="f-num">50%</span>
+            <span class="f-what">Faster BI delivery for PIMCO after moving from waterfall to Agile</span>
+          </a>
+          <a class="file" href="#sof">
+            <span class="f-tab">File 05</span>
+            <span class="f-co"><span data-logo="daraz"></span>Daraz (Alibaba Group)</span>
+            <span class="f-num">BDT 40K</span>
+            <span class="f-what">A day in revenue leakage stopped in Seller Own Fleet</span>
+          </a>
+          <a class="file" href="#ifarmer" >
+            <span class="f-tab">File 03</span>
+            <span class="f-co"><span data-logo="ifarmer"></span>iFarmer</span>
+            <span class="f-num">60→90%</span>
+            <span class="f-what">Sprint commitment reliability after a Scrum rollout</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -74,7 +104,7 @@
           <header class="cs-head">
             <span data-logo="bs23" class="logo-md"></span>
             <div>
-              <p class="cs-ctx"><b>Brain Station 23</b><span>Telco, web, learning platforms, cybersecurity, SaaS</span><span>2026 to now</span></p>
+              <p class="cs-ctx"><b>Brain Station 23</b><span>Telco, web, cloud, learning platforms, SaaS</span><span>2026 to now</span></p>
               <h3>From the first client meeting to the final invoice</h3>
             </div>
           </header>
@@ -242,6 +272,7 @@
           <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
+        <img class="contact-sprite" src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
       </div>
     </section>
   </main>
@@ -281,7 +312,7 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka</p>
+      <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka <button class="text-btn konami-hint" type="button" data-eightbit aria-label="Toggle 8-bit mode">↑↑↓↓←→←→BA</button></p>
       <ul class="footer-links">
         <li><a href="/work.html">Work</a></li>
         <li><a href="/career.html">Career</a></li>
