@@ -6,10 +6,11 @@ Personal portfolio for Ashik Hasan. Plain HTML, CSS and JavaScript, no build ste
 
 | Page | File |
 |---|---|
-| Home (summary, timeline, impact, selected work) | `index.html` |
-| Career (every role with outcomes, toolkit) | `career.html` |
+| Home (summary, timeline, impact, how I can help) | `index.html` |
+| Work (lifecycle and six case summaries) | `work.html` |
+| Career (every role, methods, stack and domains) | `career.html` |
 | Academics (degrees, CSM, maths at work) | `academics.html` |
-| About (running, games, reading, photos) | `about.html` |
+| About (running, table tennis, gaming, photos) | `about.html` |
 
 Shared files: `assets/css/site.css` (all styling), `assets/js/site.js` (behaviour), `assets/js/career-data.js` (career facts).
 
@@ -24,6 +25,17 @@ Open `assets/js/career-data.js`:
 The timeline, the "Today" line, the year labels, role durations and "N+ years of experience" all update themselves from the date. Then add a role section to `career.html` (copy an existing `<article class="role">`) and a link in the `rail` list.
 
 **Logos:** each role tries its `logos` URLs first, then the company website's icon, then shows initials. To use your own logo file, put it in `assets/logos/` and list it first, e.g. `logos: ["/assets/logos/newco.png"]`.
+
+## Common edits
+
+- **Add a case study:** in `work.html`, copy one `<article class="cs">` block into the right pillar section (Scope it, Ship it or Improve it) and change the text. Give it a unique `id`, so you can link to it as `/work.html#your-id`.
+- **Add a table-tennis result:** in `about.html`, copy one `<li>` in `record-list`. Use `class="win"` for titles and `class="podium"` for top-three finishes, and update the totals in `record-sum`.
+- **Add a race photo to the deck:** copy one `<figure class="deck-card">` in `about.html`.
+- **Make a photo open larger when clicked:** put it inside any element with `data-gallery`.
+
+## Résumé requests (Netlify Forms)
+
+The "Request my résumé" button opens a form. Netlify stores each request and emails you. One-time setup in Netlify: **Forms → Form notifications → Add notification → Email notification**, choose the `resume-request` form, and enter your email (it must belong to your Netlify team). Requests also appear under **Forms** in the Netlify dashboard, and spam is filtered automatically.
 
 ## Adding photos (no code needed)
 

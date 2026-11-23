@@ -49,7 +49,7 @@ window.CAREER = {
     {
       id: "ifarmer",
       company: "iFarmer",
-      title: "Assistant Technical PM",
+      title: "Assistant Technical Project Manager",
       team: "Tech",
       start: "2022-08",
       end: "2023-08",

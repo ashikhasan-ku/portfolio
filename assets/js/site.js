@@ -197,6 +197,134 @@
     Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
   }
 
+
+  /* ---------- Tabs (lifecycle on the Work page) ---------- */
+  document.querySelectorAll('[data-tabs]').forEach(function (box) {
+    var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
+    var select = function (t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on);
+        x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) t.focus();
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t); });
+      t.addEventListener('keydown', function (e) {
+        var n = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (n === undefined) return;
+        e.preventDefault();
+        select(tabs[(n + tabs.length) % tabs.length], true);
+      });
+    });
+    select(tabs[0]);
+  });
+
+  /* ---------- Race deck: click, swipe or arrow keys to shuffle ---------- */
+  document.querySelectorAll('[data-deck]').forEach(function (deck) {
+    var stack = deck.querySelector('.deck-stack');
+    var cards = Array.prototype.slice.call(deck.querySelectorAll('.deck-card'));
+    var count = deck.querySelector('.deck-count');
+    var order = cards.map(function (_, i) { return i; });
+    var paint = function () {
+      order.forEach(function (ci, pos) {
+        cards[ci].dataset.pos = Math.min(pos, 2);
+        cards[ci].setAttribute('aria-hidden', pos === 0 ? 'false' : 'true');
+      });
+      if (count) count.textContent = (order[0] + 1) + ' / ' + cards.length;
+    };
+    var next = function () {
+      var top = cards[order[0]];
+      if (reduceMotion) { order.push(order.shift()); return paint(); }
+      top.classList.add('is-leaving');
+      setTimeout(function () { top.classList.remove('is-leaving'); order.push(order.shift()); paint(); }, 280);
+    };
+    var prev = function () { order.unshift(order.pop()); paint(); };
+    stack.addEventListener('click', next);
+    deck.querySelector('[data-deck-next]').addEventListener('click', next);
+    deck.querySelector('[data-deck-prev]').addEventListener('click', prev);
+    deck.tabIndex = 0;
+    deck.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    });
+    var x0 = null;
+    stack.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    stack.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+    });
+    paint();
+  });
+
+  /* ---------- Dialog helpers ---------- */
+  var openDialog = function (d) { if (d && d.showModal && !d.open) d.showModal(); };
+  document.querySelectorAll('dialog').forEach(function (d) {
+    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+    d.querySelectorAll('[data-dialog-close]').forEach(function (b) { b.addEventListener('click', function () { d.close(); }); });
+  });
+
+  /* ---------- Photo viewer for any [data-gallery] ---------- */
+  var lb = document.getElementById('lightbox');
+  if (lb && lb.showModal) {
+    var lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption');
+    var set = [], at = 0;
+    var show = function (i) {
+      at = (i + set.length) % set.length;
+      var f = set[at], img = f.querySelector('img'), cap = f.querySelector('figcaption');
+      lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt;
+      lbCap.textContent = cap ? cap.textContent : img.alt;
+    };
+    document.querySelectorAll('[data-gallery]').forEach(function (g) {
+      var figs = Array.prototype.slice.call(g.querySelectorAll('figure'));
+      figs.forEach(function (f, i) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'zoom-btn';
+        btn.setAttribute('aria-label', 'View larger: ' + (f.querySelector('img').alt || 'photo'));
+        btn.addEventListener('click', function () { set = figs; show(i); openDialog(lb); });
+        f.appendChild(btn);
+      });
+    });
+    lb.querySelector('.lb-prev').addEventListener('click', function () { show(at - 1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { show(at + 1); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show(at + 1);
+      if (e.key === 'ArrowLeft') show(at - 1);
+    });
+  }
+
+  /* ---------- Résumé request (Netlify Forms, sent without leaving the page) ---------- */
+  var rd = document.getElementById('resume-dialog');
+  if (rd) {
+    document.querySelectorAll('[data-resume-open]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!rd.showModal) { location.href = 'mailto:ashikhasan.ku@gmail.com?subject=R%C3%A9sum%C3%A9%20request'; return; }
+        openDialog(rd);
+        var first = rd.querySelector('input[name="name"]'); if (first) first.focus();
+      });
+    });
+    var form = rd.querySelector('form'), done = rd.querySelector('.sheet-done'), err = rd.querySelector('.form-error');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.textContent = '';
+      if (!form.checkValidity()) { err.textContent = 'Add your name and a valid email address.'; form.reportValidity(); return; }
+      var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.textContent = 'Sending…';
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          form.hidden = true; done.hidden = false; form.reset();
+          var c = done.querySelector('button'); if (c) c.focus();
+        })
+        .catch(function () { err.textContent = 'The request didn’t go through. Email me at ashikhasan.ku@gmail.com instead.'; })
+        .then(function () { btn.disabled = false; btn.textContent = 'Send request'; });
+    });
+    rd.addEventListener('close', function () { form.hidden = false; done.hidden = true; });
+  }
+
   /* ---------- Copy email ---------- */
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     var status = document.querySelector('.copy-status');

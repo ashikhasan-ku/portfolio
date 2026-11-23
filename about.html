@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Ashik Hasan</title>
-  <meta name="description" content="Marathons, football, table tennis, games, books and Bengali game localisation: the person behind the project plans.">
+  <meta name="description" content="A full marathon finisher, five-time table-tennis champion, and gaming writer and community moderator: the person behind the project plans.">
   <meta name="author" content="Md. Ashik Hasan">
   <link rel="canonical" href="https://ashik-hasan.netlify.app/about.html">
   <meta name="theme-color" content="#F3F5F9">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Ashik Hasan">
   <meta property="og:title" content="About — Ashik Hasan">
-  <meta property="og:description" content="Marathons, football, table tennis, games, books and Bengali game localisation: the person behind the project plans.">
+  <meta property="og:description" content="A full marathon finisher, five-time table-tennis champion, and gaming writer and community moderator: the person behind the project plans.">
   <meta property="og:url" content="https://ashik-hasan.netlify.app/about.html">
   <meta property="og:image" content="https://ashik-hasan.netlify.app/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -35,6 +35,7 @@
       <nav class="main-nav" aria-label="Main">
         <ul>
           <li><a href="/">Home</a></li>
+          <li><a href="/work.html">Work</a></li>
           <li><a href="/career.html">Career</a></li>
           <li><a href="/academics.html">Academics</a></li>
           <li><a href="/about.html" aria-current="page">About</a></li>
@@ -56,16 +57,16 @@
           <div class="story" style="margin-top:1.5rem">
             <p>Project manager by profession, curious explorer by nature.</p>
             <p>I studied mathematics at Khulna University, started my career reading product data at Bdjobs, and have spent the years since between users, data and engineering teams, turning “we need something” into a plan people can follow.</p>
-            <p>Outside work I’m usually training for the next marathon, on a football pitch, at a table-tennis table, or deep in a game. I like technology that earns its place.</p>
+            <p>Outside work I run long distances, play table tennis competitively and football for fun, and have spent years writing and moderating for gaming communities.</p>
           </div>
         </div>
-        <!-- PHOTO: /assets/photos/about.jpg (portrait, about 800×1000). Falls back to headshot art. -->
+        <!-- PHOTO: /assets/photos/about.jpg (portrait, 800×1000) -->
         <figure class="portrait">
           <div class="portrait-frame" data-photo-frame>
-            <img data-photo src="/assets/photos/about.jpg" alt="Ashik smiling in a doorway of a thatched hut, wearing a gaming jersey" width="800" height="1000">
+            <img data-photo src="/assets/photos/about.jpg" alt="Ashik on a forest road, giving a peace sign" width="800" height="1000">
             <div class="portrait-art" aria-hidden="true"><span class="mono-big">AH</span><span class="bars"><i></i><i></i><i></i></span></div>
           </div>
-          <figcaption><b>Dhaka, Bangladesh</b><span>Runner, gamer, traveller</span></figcaption>
+          <figcaption><b>Dhaka, Bangladesh</b><span>Runner, player, writer</span></figcaption>
         </figure>
       </div>
     </section>
@@ -74,19 +75,26 @@
     <section class="section on-navy blueprint" aria-labelledby="run-title">
       <div class="wrap run">
         <div>
-          <h2 id="run-title" class="run-big">42.2<small>kilometres at the Dhaka International Marathon, February 2025. I run with Comfit Run Club and race six or seven times a year.</small></h2>
-          <ul class="run-list" aria-label="Recent races">
-            <li><b>Tea Trail</b><span>10 km, 2026</span></li>
-            <li><b>Dhaka International Marathon</b><span>42.2 km, 2025</span></li>
-            <li><b>UCR Run, Edition 2</b><span>7.5 km, 2025</span></li>
-            <li><b>BYLC Running with Purpose</b><span>2024</span></li>
+          <h2 id="run-title" class="run-big">42.2<small>kilometres. A full marathon finisher, running with Comfit Run Club.</small></h2>
+          <ul class="distances" aria-label="Race distances completed">
+            <li><b>42.2K</b><span>Full marathon</span></li>
+            <li><b>21.1K</b><span>Half marathons, several</span></li>
+            <li><b>25K</b><span>25 kilometres</span></li>
+            <li><b>15K</b><span>15 kilometres</span></li>
           </ul>
         </div>
-        <!-- PHOTOS: run-marathon.jpg (square), run-teatrail.jpg and run-ucr.jpg (portrait) -->
-        <div class="mosaic">
-          <figure class="big" data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/run-marathon.jpg" alt="Ashik with his finisher medal at the Dhaka International Marathon 2025" width="1000" height="1000"><figcaption>Finisher, Dhaka International Marathon 2025</figcaption></figure>
-          <figure data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/run-teatrail.jpg" alt="Ashik running the Tea Trail 10 km in 2026" width="720" height="900"><figcaption>Tea Trail 2026</figcaption></figure>
-          <figure data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/run-ucr.jpg" alt="Ashik running the UCR 7.5 km in 2025" width="720" height="900"><figcaption>UCR Run 2025</figcaption></figure>
+        <!-- Race deck: click, swipe or use the arrow keys to shuffle. PHOTOS: run-*.jpg -->
+        <div class="deck" data-deck aria-roledescription="photo deck" aria-label="Race-day photos">
+          <div class="deck-stack">
+            <figure class="deck-card"><img src="/assets/photos/run-marathon.jpg" alt="Ashik with his finisher medal at the Dhaka International Marathon 2025" width="1000" height="1000"><figcaption>Finisher, Dhaka International Marathon 2025</figcaption></figure>
+            <figure class="deck-card"><img src="/assets/photos/run-teatrail.jpg" alt="Ashik running a trail race in a Comfit Run Club shirt" width="720" height="900" loading="lazy"><figcaption>Race day with Comfit Run Club</figcaption></figure>
+            <figure class="deck-card"><img src="/assets/photos/run-ucr.jpg" alt="Ashik giving a peace sign mid-race on a city road" width="720" height="900" loading="lazy"><figcaption>Mid-race, still smiling</figcaption></figure>
+          </div>
+          <div class="deck-controls">
+            <button class="icon-btn" type="button" data-deck-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <p class="deck-count" aria-live="polite">1 / 3</p>
+            <button class="icon-btn" type="button" data-deck-next aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
         </div>
       </div>
     </section>
@@ -96,70 +104,81 @@
       <div class="wrap">
         <header class="section-head">
           <h2 id="sport-title">On the pitch and at the table</h2>
-          <p>Football and table tennis every week, a walk most days, and a swim when I can find a pool.</p>
+          <p>Table tennis is where I compete. Football is where I show up for the team.</p>
         </header>
-        <div class="strip">
-          <figure data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/sport-hogarth.jpg" alt="The Hogarth football team lined up before a tournament match" width="1000" height="750"><figcaption>Lining up for Hogarth (WPP) at a corporate tournament</figcaption></figure>
-          <figure data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/sport-weekend.jpg" alt="A group of footballers in Weekend Athletes shirts on an artificial pitch" width="1000" height="750"><figcaption>Weekend football with the Weekend Athletes</figcaption></figure>
-          <figure data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/sport-tt.jpg" alt="Ashik playing a forehand in table tennis" width="1000" height="750"><figcaption>Table tennis, every week</figcaption></figure>
+        <div class="strip" data-gallery>
+          <figure><img src="/assets/photos/sport-tt.jpg" alt="Ashik playing a forehand in table tennis" width="1000" height="750" loading="lazy"><figcaption>Table tennis, every week</figcaption></figure>
+          <figure><img src="/assets/photos/sport-hogarth.jpg" alt="The Hogarth football team lined up before a tournament match" width="1000" height="750" loading="lazy"><figcaption>Lining up for Hogarth (WPP) at a corporate tournament</figcaption></figure>
+          <figure><img src="/assets/photos/sport-weekend.jpg" alt="A group of footballers in Weekend Athletes shirts on an artificial pitch" width="1000" height="750" loading="lazy"><figcaption>Weekend football with the Weekend Athletes</figcaption></figure>
+        </div>
+
+        <div class="record" id="table-tennis">
+          <div class="record-head">
+            <h3>Table-tennis record</h3>
+            <p class="record-sum"><b>5</b> titles <b>2</b> podiums since 2018</p>
+          </div>
+          <ol class="record-list">
+            <li class="win"><span class="yr">2026</span><span class="ev">Daraz Table Tennis Tournament</span><span class="res">Winner, singles and doubles</span></li>
+            <li><span class="yr">2025</span><span class="ev">Inter Software Company Table Tennis Tournament</span><span class="res">Quarter-finals, as part of the WPP team</span></li>
+            <li class="podium"><span class="yr">2024</span><span class="ev">WPP Table Tennis Tournament</span><span class="res">Third place</span></li>
+            <li class="podium"><span class="yr">2023</span><span class="ev">WPP Table Tennis Tournament</span><span class="res">Third place</span></li>
+            <li class="win"><span class="yr">2019</span><span class="ev">Khulna University Inter-Hall Tournament</span><span class="res">Winner, singles</span></li>
+            <li class="win"><span class="yr">2018</span><span class="ev">Khulna University Inter-Hall Tournament</span><span class="res">Winner, singles and doubles</span></li>
+          </ol>
         </div>
       </div>
     </section>
 
-    <!-- ============ PLAY AND READ ============ -->
+    <!-- ============ GAMING: WRITING AND COMMUNITY ============ -->
     <section class="section section-tint" aria-labelledby="play-title">
       <div class="wrap">
         <header class="section-head">
-          <h2 id="play-title">Play, read, repeat</h2>
-          <p>The things I come back to when the plan is done for the day.</p>
+          <h2 id="play-title">Games, words and communities</h2>
+          <p>Gaming is where I learned to write for an audience, design for players, and moderate busy communities.</p>
         </header>
         <div class="play">
           <div class="shelf-card feature">
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h7M7.5 5v2M5.5 7c.5 3 2.5 5 5 6M10 7c-.5 3-2.5 5-5.5 6.5M13 19l3.5-8 3.5 8M14.3 16.5h4.4"/></svg></span>
             <p class="bn" lang="bn">বাংলায় খেলুন</p>
-            <h3>Putting a game into Bengali</h3>
-            <p>From 2022 to 2024 I volunteered with MOONTON to localise Mobile Legends: Bang Bang into Bengali, so Bengali-speaking players could play in their own language. I still play it as ashaxel.</p>
+            <h3>Putting Mobile Legends into Bengali</h3>
+            <p>From 2022 to 2024 I volunteered with MOONTON on Mobile Legends: Bang Bang as a Content Writer, Graphics Designer and Localization Moderator, helping Bengali-speaking players play in their own language.</p>
+            <ul class="tags"><li>Content Writer</li><li>Graphics Designer</li><li>Localization Moderator</li></ul>
           </div>
           <div class="shelf-card">
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 8h12a4 4 0 0 1 4 4v1a4 4 0 0 1-7 2.6L14 14h-4l-1 1.6A4 4 0 0 1 2 13v-1a4 4 0 0 1 4-4ZM7 11v3M5.5 12.5h3M16 12h.01M18 13.5h.01"/></svg></span>
+            <h3>Honor of Kings Bangladesh</h3>
+            <p>Moderator for the Honor of Kings Bangladesh Community.</p>
+          </div>
+          <a class="shelf-card link-card" href="https://gamingonphone.com/author/ashik-hasan/" target="_blank" rel="noopener">
+            <h3>GamingonPhone</h3>
+            <p>Writer, covering mobile games.</p>
+            <span class="link-go">Read my articles</span>
+          </a>
+          <div class="shelf-card">
+            <h3>GameRiv</h3>
+            <p>Guide Editor.</p>
+          </div>
+          <div class="shelf-card">
             <h3>On the shelf</h3>
-            <p>PlayStation 4, Nintendo Switch Lite and Nintendo 3DS.</p>
+            <p>PlayStation 4, Nintendo Switch Lite, Nintendo 3DS, and a Kobo Libra Color for reading.</p>
           </div>
         </div>
-        <div class="strip" style="margin-top:1.25rem">
-          <figure data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/game-switch.jpg" alt="A Nintendo Switch Lite showing Pokémon Legends: Arceus, held up in front of a lake" width="1000" height="750"><figcaption>Pokémon Legends: Arceus, by the lake</figcaption></figure>
-          <figure data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/game-unite.jpg" alt="Pokémon UNITE screen showing Master rank for Season 4" width="1000" height="750"><figcaption>Master rank, Pokémon UNITE Season 4</figcaption></figure>
-          <figure data-photo-frame><img data-photo loading="lazy" decoding="async" src="/assets/photos/game-mlbb.jpg" alt="Mobile Legends: Bang Bang match lobby with the player ashaxel" width="1000" height="750"><figcaption>Mobile Legends as ashaxel</figcaption></figure>
-        </div>
-        <div class="play" style="margin-top:1.25rem">
-          <div class="shelf-card">
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15ZM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5M8 7h8"/></svg></span>
-            <h3>Reading</h3>
-            <p>Mostly on a Kobo Libra Color, with an iPad for everything else.</p>
-          </div>
-          <div class="shelf-card wide">
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2M17 3h4v4M21 3l-6 6"/></svg></span>
-            <h3>Useful technology</h3>
-            <p>I’m always exploring tools and gadgets that make everyday work easier, and keeping the ones that earn their place.</p>
-          </div>
+        <div class="strip" data-gallery style="margin-top:1.25rem">
+          <figure><img src="/assets/photos/game-switch.jpg" alt="A Nintendo Switch Lite showing Pokémon Legends: Arceus, held up in front of a lake" width="1000" height="750" loading="lazy"><figcaption>Pokémon Legends: Arceus, by the lake</figcaption></figure>
+          <figure><img src="/assets/photos/game-unite.jpg" alt="Pokémon UNITE screen showing Master rank for Season 4" width="1000" height="750" loading="lazy"><figcaption>Master rank, Pokémon UNITE Season 4</figcaption></figure>
+          <figure><img src="/assets/photos/game-mlbb.jpg" alt="Mobile Legends: Bang Bang match lobby with the player ashaxel" width="1000" height="750" loading="lazy"><figcaption>Mobile Legends as ashaxel</figcaption></figure>
         </div>
       </div>
     </section>
 
     <!-- ============ MOMENTS ============ -->
-    <section class="section gallery" aria-labelledby="gallery-title">
+    <section class="section" aria-labelledby="gallery-title">
       <div class="wrap">
-        <header class="section-head">
-          <h2 id="gallery-title">Moments</h2>
-          <p>Beaches, forests, water, and the occasional start line.</p>
-        </header>
-        <div class="photo-grid">
-          <figure data-photo-frame><img data-photo src="/assets/photos/gallery-1.jpg" alt="Ashik on a beach at sunset, looking out to sea" width="930" height="697"></figure>
-          <figure data-photo-frame><img data-photo src="/assets/photos/gallery-2.jpg" alt="Ashik on a forest road, giving a peace sign" width="1000" height="750"></figure>
-          <figure data-photo-frame><img data-photo src="/assets/photos/gallery-3.jpg" alt="Ashik in a red kayak on a lake" width="1000" height="750"></figure>
-          <figure data-photo-frame><img data-photo src="/assets/photos/gallery-4.jpg" alt="Ashik in a floral shirt with the sea behind him" width="1000" height="750"></figure>
-          <figure data-photo-frame><img data-photo src="/assets/photos/gallery-5.jpg" alt="Ashik on a sandy beach in a blue travel T-shirt" width="1000" height="750"></figure>
-          <figure data-photo-frame><img data-photo src="/assets/photos/gallery-6.jpg" alt="Ashik at the BYLC Running with Purpose 2024 event" width="1000" height="750"></figure>
+        <header class="section-head"><h2 id="gallery-title">Moments</h2><p>Beaches, forests and water. Select a photo to see it larger.</p></header>
+        <div class="masonry" data-gallery>
+          <figure><img src="/assets/photos/gallery-1.jpg" alt="Ashik on a beach at sunset, looking out to sea" width="930" height="697" loading="lazy"></figure>
+          <figure><img src="/assets/photos/gallery-2.jpg" alt="Ashik smiling in a thatched-hut doorway, wearing a gaming jersey" width="750" height="1000" loading="lazy"></figure>
+          <figure><img src="/assets/photos/gallery-3.jpg" alt="Ashik in a red kayak on a lake" width="1000" height="750" loading="lazy"></figure>
+          <figure><img src="/assets/photos/gallery-4.jpg" alt="Ashik in a floral shirt with the sea behind him" width="1000" height="750" loading="lazy"></figure>
+          <figure><img src="/assets/photos/gallery-5.jpg" alt="Ashik on a sandy beach in a blue travel T-shirt" width="1000" height="750" loading="lazy"></figure>
         </div>
       </div>
     </section>
@@ -171,21 +190,55 @@
         <p class="lede">Whether it’s a role, a project or a question about delivery, my inbox is open.</p>
         <div class="contact-actions">
           <a class="btn btn-primary" href="mailto:ashikhasan.ku@gmail.com">ashikhasan.ku@gmail.com</a>
+          <button class="btn btn-ghost" type="button" data-resume-open>Request my résumé</button>
           <button class="btn btn-ghost" type="button" data-copy="ashikhasan.ku@gmail.com">Copy email</button>
         </div>
         <ul class="contact-links">
           <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="mailto:ashikhasan.ku@gmail.com?subject=R%C3%A9sum%C3%A9%20request">Request my résumé</a></li>
         </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
       </div>
     </section>
   </main>
 
+  <!-- ============ RÉSUMÉ REQUEST (Netlify Forms emails each request) ============ -->
+  <dialog class="sheet" id="resume-dialog" aria-labelledby="resume-title">
+    <form name="resume-request" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field" class="resume-form">
+      <input type="hidden" name="form-name" value="resume-request">
+      <input type="hidden" name="subject" value="Résumé request from the portfolio">
+      <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="sheet-head">
+        <h2 id="resume-title">Request my résumé</h2>
+        <button class="icon-btn" type="button" data-dialog-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <p class="sheet-lede">I’ll email you an up-to-date copy.</p>
+      <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+      <label class="field"><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>
+      <label class="field"><span>Company <em>optional</em></span><input name="company" autocomplete="organization"></label>
+      <label class="field"><span>Role or note <em>optional</em></span><textarea name="note" rows="3"></textarea></label>
+      <p class="form-error" role="alert"></p>
+      <button class="btn btn-primary btn-block" type="submit">Send request</button>
+    </form>
+    <div class="sheet-done" hidden>
+      <h2>Request sent</h2>
+      <p>Thanks. I’ll email my résumé to you shortly.</p>
+      <button class="btn btn-ghost" type="button" data-dialog-close>Close</button>
+    </div>
+  </dialog>
+
+  <!-- ============ PHOTO VIEWER ============ -->
+  <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+    <figure><img alt=""><figcaption></figcaption></figure>
+    <button class="icon-btn lb-close" type="button" data-dialog-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="icon-btn lb-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="icon-btn lb-next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </dialog>
+
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <p>© <span data-year>2026</span> Md. Ashik Hasan, Dhaka</p>
       <ul class="footer-links">
+        <li><a href="/work.html">Work</a></li>
         <li><a href="/career.html">Career</a></li>
         <li><a href="/academics.html">Academics</a></li>
         <li><a href="/about.html">About</a></li>
