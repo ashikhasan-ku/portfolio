@@ -62,6 +62,11 @@ The site is "professional first, pixel second". Where each pixel piece lives:
 
 | What | File and where to edit |
 |---|---|
+| Menu ("level select" dock) | `_head` part of every page: the `<nav class="main-nav">` block. Icons are 16×16 pixel SVGs. On phones it becomes a bottom tab bar |
+| Pixel cursor | `assets/cursor-arrow.svg` and `assets/cursor-hand.svg`; the trailing reticle is in `site.js` |
+| Home portrait | `assets/photos/headshot-cutout.webp` (background removed). Replace it with any PNG/WebP that has a transparent background |
+| CSM seal | `index.html`, search for `csm-seal` |
+| Academics photos | Linked from Wikimedia Commons with credits on the page. To use your own, put the file in `assets/photos` and change the `src` |
 | Pixel avatar | `assets/photos/avatar-pixel.png` (40×50 px, made from the headshot). Replace it with any 40×50 PNG; the browser scales it up crisply. |
 | Hero title artwork (ring O, Gantt A) | `index.html`, inside `<h1 class="title-art">` |
 | CSM sticker, `> ashaxel` gamer tag | `index.html` and `about.html`, search for `sticker` |

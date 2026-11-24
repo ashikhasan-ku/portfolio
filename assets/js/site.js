@@ -510,4 +510,74 @@
   document.querySelectorAll('[data-eightbit]').forEach(function (b) {
     b.addEventListener('click', function () { var on = !root.classList.contains('eightbit'); setEight(on); toast(on ? '8-BIT MODE ON' : '8-BIT MODE OFF'); });
   });
+
+  /* =========================================================
+     v3.1 Dock: a sliding cartridge marks the current page,
+     previews where you're pointing, and glides in from the
+     page you came from.
+     ========================================================= */
+  document.querySelectorAll('[data-dock]').forEach(function (dock) {
+    var ind = dock.querySelector('.dock-ind');
+    var links = Array.prototype.slice.call(dock.querySelectorAll('a'));
+    var cur = links.findIndex(function (a) { return a.getAttribute('aria-current') === 'page'; });
+    if (!ind) return;
+    var place = function (i, instant) {
+      if (i < 0) { ind.style.opacity = '0'; return; }
+      var a = links[i], li = a.parentElement;
+      if (instant) ind.style.transition = 'none';
+      ind.style.opacity = '1';
+      ind.style.setProperty('--ind-x', li.offsetLeft + 'px');
+      ind.style.setProperty('--ind-w', li.offsetWidth + 'px');
+      if (instant) { ind.offsetWidth; ind.style.transition = ''; }
+    };
+    var from = -1;
+    try { from = parseInt(sessionStorage.getItem('dockFrom'), 10); sessionStorage.removeItem('dockFrom'); } catch (e) {}
+    if (!reduceMotion && from >= 0 && from !== cur && links[from]) {
+      place(from, true);
+      setTimeout(function () { place(cur); }, 120);
+    } else place(cur, true);
+    links.forEach(function (a, i) {
+      a.addEventListener('mouseenter', function () { dock.classList.add('is-peek'); place(i); });
+      a.addEventListener('focus', function () { dock.classList.add('is-peek'); place(i); });
+      a.addEventListener('click', function () { try { sessionStorage.setItem('dockFrom', String(cur)); } catch (e) {} });
+    });
+    var reset = function () { dock.classList.remove('is-peek'); place(cur); };
+    dock.addEventListener('mouseleave', reset);
+    dock.addEventListener('focusout', function (e) { if (!dock.contains(e.relatedTarget)) reset(); });
+    window.addEventListener('resize', function () { place(cur, true); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(cur, true); });
+  });
+
+  /* ---------- Trailing pixel reticle (mouse only) ---------- */
+  if (finePointer && !reduceMotion) {
+    var ret = document.createElement('div'); ret.className = 'reticle'; ret.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ret);
+    var tx = -100, ty = -100, rx = -100, ry = -100, running = false;
+    var HOT = 'a, button, [role="button"], summary, label, select, input, textarea, [data-tilt], .flip';
+    var loop = function () {
+      rx += (tx - rx) * 0.22; ry += (ty - ry) * 0.22;
+      ret.style.transform = 'translate(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px)';
+      if (Math.abs(tx - rx) + Math.abs(ty - ry) > 0.3) requestAnimationFrame(loop); else running = false;
+    };
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      tx = e.clientX; ty = e.clientY; ret.classList.add('on');
+      var t = e.target.closest ? e.target.closest(HOT) : null;
+      ret.classList.toggle('hot', !!t);
+      var navy = e.target.closest ? e.target.closest('.on-navy, .dock, .header-cta') : null;
+      ret.style.setProperty('--rc', navy && !t ? '#fff' : '');
+      if (!running) { running = true; requestAnimationFrame(loop); }
+    }, { passive: true });
+    document.addEventListener('pointerdown', function () { ret.classList.add('down'); });
+    document.addEventListener('pointerup', function () { ret.classList.remove('down'); });
+    document.documentElement.addEventListener('mouseleave', function () { ret.classList.remove('on'); });
+  }
+
+  /* ---------- Mark small set pieces when they scroll into view (thesis map, IELTS gauge) ---------- */
+  var pieces = document.querySelectorAll('.paper, .score-report');
+  if (reduceMotion || !('IntersectionObserver' in window)) pieces.forEach(function (x) { x.classList.add('in'); });
+  else {
+    var pio = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); pio.unobserve(x.target); } }); }, { threshold: 0.35 });
+    pieces.forEach(function (x) { pio.observe(x); });
+  }
 })();
