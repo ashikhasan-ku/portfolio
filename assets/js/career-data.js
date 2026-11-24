@@ -1,3 +1,9 @@
+/* Site settings you may want to change.
+   bookingUrl: paste your Google Calendar booking page or Calendly link here, e.g.
+   "https://calendar.app.google/xxxx" or "https://calendly.com/ashikhasan/30min".
+   Leave it empty and "Book a meeting" opens an email instead. */
+window.SITE = { bookingUrl: "" };
+
 /* =========================================================
    CAREER DATA — the only file to edit when you change jobs.
 

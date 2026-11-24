@@ -30,7 +30,7 @@
         if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { d.classList.add('px-enter'); setTimeout(function () { d.classList.remove('px-enter'); }, 1500); } }
     } catch (e) {}
   </script>
-</head>
+<link rel="preload" as="image" type="image/webp" imagesrcset="/assets/photos/ku-gate-900.webp 900w, /assets/photos/ku-gate-1600.webp 1600w, /assets/photos/ku-gate-2560.webp 2560w" imagesizes="100vw" fetchpriority="high"></head>
 <body class="navy-head" data-page="Academics">
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
@@ -59,9 +59,12 @@
 
   <main id="main">
     <!-- ============ HERO: Khulna University campus photo ============ -->
-    <!-- Photos are from Wikimedia Commons under free licences (credits on the page). To use your own, drop a file in /assets/photos and change the src. -->
+    <!-- Cover photo: assets/photos/ku-gate-*.webp. Campus photos: Wikimedia Commons, free licences, credits on the page. -->
     <section class="ph ac-hero on-navy px-bottom" aria-labelledby="page-title">
-      <img class="ac-hero-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Khulna_University_Gate_20250807.jpg/1920px-Khulna_University_Gate_20250807.jpg" alt="" width="1920" height="1440" fetchpriority="high">
+      <picture>
+        <source type="image/webp" srcset="/assets/photos/ku-gate-900.webp 900w, /assets/photos/ku-gate-1600.webp 1600w, /assets/photos/ku-gate-2560.webp 2560w" sizes="100vw">
+        <img class="ac-hero-img" src="/assets/photos/ku-gate-1600.jpg" alt="" width="1600" height="960" fetchpriority="high">
+      </picture>
       <div class="wrap ph-grid">
         <div>
           <span class="lvl ph-tag">Academics</span>
@@ -87,7 +90,7 @@
           </table>
         </div>
       </div>
-      <p class="credit">Photo: Khulna University main gate, by Alphaa Noman, <a href="https://commons.wikimedia.org/wiki/File:Khulna_University_Gate_20250807.jpg" rel="noopener" target="_blank">CC BY 4.0</a></p>
+      <p class="credit">Khulna University, Shahid Mir Mugdho gate</p>
     </section>
 
     <!-- ============ THE PATH: one card per institution ============ -->
@@ -102,20 +105,22 @@
         <ol class="inst" data-reveal>
           <!-- School and college: no free photo exists, so it gets an original crest -->
           <li class="inst-card">
-            <div class="inst-media inst-crest" aria-hidden="true">
-              <svg viewBox="0 0 200 220">
+            <figure class="inst-media">
+              <img src="/assets/photos/school-campus.webp" alt="The Birshreshtha Munshi Abdur Rouf Public College campus, its playground and buildings" width="1280" height="960" loading="lazy">
+              <span class="crest-badge" aria-hidden="true"><svg viewBox="0 0 200 220">
                 <path class="cr-shield" d="M100 12 L178 40 V110 C178 160 142 192 100 208 C58 192 22 160 22 110 V40 Z"/>
                 <path class="cr-inner" d="M100 28 L164 51 V110 C164 151 135 177 100 191 C65 177 36 151 36 110 V51 Z"/>
                 <path class="cr-book" d="M56 118 C76 108 92 110 100 118 C108 110 124 108 144 118 V150 C124 140 108 142 100 150 C92 142 76 140 56 150 Z"/>
                 <path class="cr-spine" d="M100 118 V150"/>
                 <path class="cr-star" d="M100 58 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2 z"/>
-              </svg>
-              <p class="motto">“Knowledge is power, industry is freedom”</p>
-            </div>
+              </svg></span>
+              <figcaption class="credit">Hasnat Sohan, <a href="https://commons.wikimedia.org/wiki/File:BMARPC_Play_Ground_%26_Buildings1.jpg" rel="noopener" target="_blank">CC BY-SA 4.0</a></figcaption>
+            </figure>
             <div class="inst-body">
               <p class="inst-when">2011 and 2013</p>
               <h3>Birshreshtha Munshi Abdur Rouf Public College</h3>
               <p class="inst-where">Pilkhana, Dhaka</p>
+              <p class="motto-line">“Knowledge is power, industry is freedom”</p>
               <div class="medals">
                 <div class="medal gold"><span class="m-disc"><b>5.00</b></span><span class="m-lbl">SSC<br>GPA</span></div>
                 <div class="medal gold"><span class="m-disc"><b>5.00</b></span><span class="m-lbl">HSC<br>GPA</span></div>
@@ -126,8 +131,8 @@
 
           <li class="inst-card">
             <figure class="inst-media">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Khulna_University_lake.jpg/960px-Khulna_University_lake.jpg" alt="The lake on the Khulna University campus" width="960" height="640" loading="lazy">
-              <figcaption class="credit">Fatima.nisha, <a href="https://commons.wikimedia.org/wiki/File:Khulna_University_lake.jpg" rel="noopener" target="_blank">CC BY-SA 4.0</a></figcaption>
+              <img src="/assets/photos/ku-academic.webp" alt="Academic Building 1 at Khulna University, with a university bus in front" width="1280" height="960" loading="lazy" style="object-position:50% 30%">
+              <figcaption class="credit">Galib.cse, <a href="https://commons.wikimedia.org/wiki/File:%E0%A6%8F%E0%A6%95%E0%A6%BE%E0%A6%A1%E0%A7%87%E0%A6%AE%E0%A6%BF%E0%A6%95_%E0%A6%AD%E0%A6%AC%E0%A6%A8_%E0%A7%A7.jpg" rel="noopener" target="_blank">public domain</a></figcaption>
             </figure>
             <div class="inst-body">
               <p class="inst-when">Nov 2014 to Dec 2018</p>
@@ -150,7 +155,7 @@
 
           <li class="inst-card">
             <figure class="inst-media">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Odommo_Bangla.jpg" alt="Odommo Bangla, the sculpture on the Khulna University campus" width="896" height="2000" loading="lazy" style="object-position:50% 30%">
+              <img src="/assets/photos/ku-odommo.webp" alt="Odommo Bangla, the sculpture on the Khulna University campus" width="720" height="1607" loading="lazy" style="object-position:50% 30%">
               <figcaption class="credit">Bir Mujahid, <a href="https://commons.wikimedia.org/wiki/File:Odommo_Bangla.jpg" rel="noopener" target="_blank">CC BY-SA 4.0</a></figcaption>
             </figure>
             <div class="inst-body">
@@ -304,14 +309,21 @@
       <div class="wrap">
         <h2 id="contact-title">Have a project that needs a plan?</h2>
         <p class="lede">Whether it’s a role, a project or a question about delivery, my inbox is open.</p>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="mailto:ashikhasan.ku@gmail.com">ashikhasan.ku@gmail.com</a>
-          <button class="btn btn-ghost" type="button" data-resume-open>Request my résumé</button>
-          <button class="btn btn-ghost" type="button" data-copy="ashikhasan.ku@gmail.com">Copy email</button>
+        <div class="contact-cards">
+          <a class="cc" href="mailto:ashikhasan.ku@gmail.com">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 3h14v10H1zM3 5v1h1v1h1v1h1v1h4V8h1V7h1V6h1V5h-1v1h-1v1h-1v1H6V7H5V6H4V5z"/></svg>
+            <b>Send an email</b><span>ashikhasan.ku@gmail.com</span>
+          </a>
+          <button class="cc" type="button" data-resume-open>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1h7l3 3v11H3zM5 6v1h6V6zm0 3v1h6V9zm0 3v1h4v-1z"/></svg>
+            <b>Request my résumé</b><span>An up-to-date copy by email</span>
+          </button>
+          <!-- BOOKING: set your booking link in /assets/js/career-data.js (window.SITE.bookingUrl). Until then this opens an email. -->
+          <a class="cc cc-hot" href="mailto:ashikhasan.ku@gmail.com?subject=Meeting%20request" data-booking>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1h2v2h4V1h2v2h3v12H1V3h3zM3 7v6h10V7zm2 2h2v2H5z"/></svg>
+            <b>Book a meeting</b><span>Pick a 30-minute slot</span>
+          </a>
         </div>
-        <ul class="contact-links">
-          <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
         <img class="contact-sprite" src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
       </div>

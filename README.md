@@ -67,6 +67,10 @@ The site is "professional first, pixel second". Where each pixel piece lives:
 | Home portrait | `assets/photos/headshot-cutout.webp` (background removed). Replace it with any PNG/WebP that has a transparent background |
 | CSM seal | `index.html`, search for `csm-seal` |
 | Academics photos | Linked from Wikimedia Commons with credits on the page. To use your own, put the file in `assets/photos` and change the `src` |
+| "Book a meeting" link | `assets/js/career-data.js`, top of the file: paste your booking link into `window.SITE.bookingUrl` |
+| Scope / Ship / Improve diagrams | Generated into `index.html` and `work.html`; the numbers beside them are plain text you can edit |
+| Client logos and tool logos | `assets/logos/` (SVG). Add a logo there and reference it with an `<img>` |
+| Methods "periodic table" | `career.html`, section `methods`: one `<li class="el ...">` per method |
 | Pixel avatar | `assets/photos/avatar-pixel.png` (40×50 px, made from the headshot). Replace it with any 40×50 PNG; the browser scales it up crisply. |
 | Hero title artwork (ring O, Gantt A) | `index.html`, inside `<h1 class="title-art">` |
 | CSM sticker, `> ashaxel` gamer tag | `index.html` and `about.html`, search for `sticker` |

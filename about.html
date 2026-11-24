@@ -270,14 +270,21 @@
       <div class="wrap">
         <h2 id="contact-title">Have a project that needs a plan?</h2>
         <p class="lede">Whether it’s a role, a project or a question about delivery, my inbox is open.</p>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="mailto:ashikhasan.ku@gmail.com">ashikhasan.ku@gmail.com</a>
-          <button class="btn btn-ghost" type="button" data-resume-open>Request my résumé</button>
-          <button class="btn btn-ghost" type="button" data-copy="ashikhasan.ku@gmail.com">Copy email</button>
+        <div class="contact-cards">
+          <a class="cc" href="mailto:ashikhasan.ku@gmail.com">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 3h14v10H1zM3 5v1h1v1h1v1h1v1h4V8h1V7h1V6h1V5h-1v1h-1v1h-1v1H6V7H5V6H4V5z"/></svg>
+            <b>Send an email</b><span>ashikhasan.ku@gmail.com</span>
+          </a>
+          <button class="cc" type="button" data-resume-open>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1h7l3 3v11H3zM5 6v1h6V6zm0 3v1h6V9zm0 3v1h4v-1z"/></svg>
+            <b>Request my résumé</b><span>An up-to-date copy by email</span>
+          </button>
+          <!-- BOOKING: set your booking link in /assets/js/career-data.js (window.SITE.bookingUrl). Until then this opens an email. -->
+          <a class="cc cc-hot" href="mailto:ashikhasan.ku@gmail.com?subject=Meeting%20request" data-booking>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1h2v2h4V1h2v2h3v12H1V3h3zM3 7v6h10V7zm2 2h2v2H5z"/></svg>
+            <b>Book a meeting</b><span>Pick a 30-minute slot</span>
+          </a>
         </div>
-        <ul class="contact-links">
-          <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
         <img class="contact-sprite" src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
       </div>

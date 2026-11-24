@@ -580,4 +580,79 @@
     var pio = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); pio.unobserve(x.target); } }); }, { threshold: 0.35 });
     pieces.forEach(function (x) { pio.observe(x); });
   }
+
+  /* =========================================================
+     v3.2: pillar tabs, diagrams, method table, domain map, booking link
+     ========================================================= */
+  var vizIO = ('IntersectionObserver' in window) ? new IntersectionObserver(function (en) {
+    en.forEach(function (x) { x.target.classList.toggle('in-view', x.isIntersecting); syncPlay(x.target); });
+  }, { threshold: 0.25 }) : null;
+  function syncPlay(el) {
+    var panel = el.closest('.pz-panel');
+    var on = el.classList.contains('in-view') && !(panel && panel.hidden);
+    el.classList.toggle('play', on && !reduceMotion);
+  }
+  document.querySelectorAll('[data-viz], .pz-viz').forEach(function (v) { if (vizIO) vizIO.observe(v); else v.classList.add('play'); });
+
+  document.querySelectorAll('[data-pz]').forEach(function (pz) {
+    var tabs = Array.prototype.slice.call(pz.querySelectorAll('[role="tab"]'));
+    var timer = null, auto = !reduceMotion, cur = 0;
+    var show = function (i, focus) {
+      cur = i;
+      tabs.forEach(function (t, j) {
+        var on = j === i, p = document.getElementById(t.getAttribute('aria-controls'));
+        t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1; p.hidden = !on;
+        var v = p.querySelector('.pz-viz'); if (v) syncPlay(v);
+        var time = t.querySelector('.pz-time'); if (time) { time.style.animation = 'none'; time.offsetWidth; time.style.animation = ''; }
+      });
+      if (focus) tabs[i].focus();
+    };
+    var tick = function () { clearInterval(timer); if (auto) timer = setInterval(function () { if (!pz.classList.contains('paused') && pz.classList.contains('in-view')) show((cur + 1) % tabs.length); }, 7000); };
+    pz.classList.toggle('auto', auto);
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { auto = false; pz.classList.remove('auto'); clearInterval(timer); show(i); });
+      t.addEventListener('keydown', function (e) {
+        var k = e.key, n = tabs.length;
+        if (k === 'ArrowDown' || k === 'ArrowRight') { e.preventDefault(); auto = false; pz.classList.remove('auto'); show((i + 1) % n, true); }
+        if (k === 'ArrowUp' || k === 'ArrowLeft') { e.preventDefault(); auto = false; pz.classList.remove('auto'); show((i - 1 + n) % n, true); }
+      });
+    });
+    pz.addEventListener('mouseenter', function () { pz.classList.add('paused'); });
+    pz.addEventListener('mouseleave', function () { pz.classList.remove('paused'); });
+    if (vizIO) { var pio2 = new IntersectionObserver(function (en) { pz.classList.toggle('in-view', en[0].isIntersecting); }, { threshold: 0.3 }); pio2.observe(pz); }
+    else pz.classList.add('in-view');
+    show(0); tick();
+  });
+
+  document.querySelectorAll('[data-ptable]').forEach(function (pt) {
+    var btns = pt.querySelectorAll('.ptf');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        pt.setAttribute('data-sel', b.dataset.f);
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-dmap]').forEach(function (dm) {
+    var cos = dm.querySelectorAll('.dmap-cos li'), pinned = null;
+    var light = function (btn) {
+      dm.querySelectorAll('.dom').forEach(function (d) { d.classList.toggle('on', d === btn); });
+      if (!btn) { dm.classList.remove('has-sel'); cos.forEach(function (c) { c.classList.remove('hit'); }); return; }
+      var want = btn.dataset.co.split(' ');
+      dm.classList.add('has-sel');
+      cos.forEach(function (c) { c.classList.toggle('hit', want.indexOf(c.dataset.co) > -1); });
+    };
+    dm.querySelectorAll('.dom').forEach(function (d) {
+      d.addEventListener('mouseenter', function () { light(d); });
+      d.addEventListener('focus', function () { light(d); });
+      d.addEventListener('click', function () { pinned = pinned === d ? null : d; light(pinned); });
+      d.addEventListener('mouseleave', function () { light(pinned); });
+      d.addEventListener('blur', function () { light(pinned); });
+    });
+  });
+
+  if (window.SITE && window.SITE.bookingUrl) {
+    document.querySelectorAll('[data-booking]').forEach(function (a) { a.href = window.SITE.bookingUrl; a.target = '_blank'; a.rel = 'noopener'; });
+  }
 })();

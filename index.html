@@ -83,7 +83,7 @@
             </ul>
             <div class="hero-actions">
               <a class="btn btn-primary" href="/work.html">See my work</a>
-              <button class="btn btn-ghost" type="button" data-resume-open>Request my résumé</button>
+              <a class="btn btn-ghost btn-li" href="https://www.linkedin.com/in/ashikhasan-ku/" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zm7 0h3.8v1.5h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91H10z"/></svg>LinkedIn</a>
             </div>
           </div>
 
@@ -168,40 +168,96 @@
       </div>
     </section>
 
-    <!-- ============ PILLARS ============ -->
+    <!-- ============ PILLARS: pick a tab, watch the diagram ============ -->
     <section class="section band band-tint" aria-labelledby="pillars-title">
       <div class="wrap">
         <header class="section-head">
           <span class="lvl">How I can help</span>
           <h2 id="pillars-title">Scope it, ship it, improve it</h2>
-          <p>Three things I do well, each backed by projects you can read.</p>
         </header>
-        <div class="pillars" data-reveal>
-          <a class="pillar" href="/work.html#scope" data-tilt>
-            <span class="pillar-step" aria-hidden="true"><i></i></span>
-            <h3>Scope it</h3>
-            <p>I turn a vague need into a plan, a price and a team a client can sign off.</p>
-            <ul><li>End-to-end lifecycle at Brain Station 23</li><li>WBS, PERT and analogous estimation</li><li>Fixed, subscription and revenue-share pricing</li></ul>
-            <span class="pillar-go">See scoping work</span>
-          </a>
-          <a class="pillar" href="/work.html#ship" data-tilt>
-            <span class="pillar-step" aria-hidden="true"><i></i><i></i></span>
-            <h3>Ship it</h3>
-            <p>I get teams delivering predictably, across time zones and stakeholders.</p>
-            <ul><li>Scrum rollout: 60% → 90% reliability</li><li>Waterfall to Agile: 50% faster BI delivery</li><li>14 hubs closed, sellers moved safely</li></ul>
-            <span class="pillar-go">See delivery work</span>
-          </a>
-          <a class="pillar" href="/work.html#improve" data-tilt>
-            <span class="pillar-step" aria-hidden="true"><i></i><i></i><i></i></span>
-            <h3>Improve it</h3>
-            <p>I find the leak in the numbers, then build the reporting and process to fix it.</p>
-            <ul><li>BDT 40K a day in leakage recovered</li><li>~10% GMV rise in campaigns</li><li>Reports cut from 30 to 5 minutes with AI</li></ul>
-            <span class="pillar-go">See improvement work</span>
-          </a>
+        <div class="pz" data-pz>
+          <div class="pz-tabs" role="tablist" aria-label="Three ways I help">
+            <button class="pz-tab" role="tab" id="pz-t1" aria-controls="pz-p1" aria-selected="true"><span class="pz-n" aria-hidden="true"><i></i></span><span><b>Scope it</b><small>Vague need → signed plan</small></span><span class="pz-time" aria-hidden="true"></span></button>
+            <button class="pz-tab" role="tab" id="pz-t2" aria-controls="pz-p2" aria-selected="false" tabindex="-1"><span class="pz-n" aria-hidden="true"><i></i><i></i></span><span><b>Ship it</b><small>Teams that deliver on time</small></span><span class="pz-time" aria-hidden="true"></span></button>
+            <button class="pz-tab" role="tab" id="pz-t3" aria-controls="pz-p3" aria-selected="false" tabindex="-1"><span class="pz-n" aria-hidden="true"><i></i><i></i><i></i></span><span><b>Improve it</b><small>Find the leak, fix it</small></span><span class="pz-time" aria-hidden="true"></span></button>
+          </div>
+          <div class="pz-panel" role="tabpanel" id="pz-p1" aria-labelledby="pz-t1">
+            <div class="pz-viz"><svg class="viz viz-scope" viewBox="0 0 520 250" role="img" aria-label="A vague brief becomes a work breakdown, then a plan with a price">
+  <g class="vz-stage s1">
+    <path class="vz-cloud" d="M40 120c-18 0-28-14-24-28 4-13 18-18 28-14 4-16 22-24 38-16 10-12 32-10 38 6 16-2 28 12 24 26 12 6 12 26-4 30-4 14-22 18-32 10-10 12-32 12-40 0-10 8-26 4-28-14z"/>
+    <text class="vz-q" x="88" y="113" text-anchor="middle">?</text>
+    <text class="vz-lbl" x="88" y="200" text-anchor="middle">Brief</text>
+  </g>
+  <path class="vz-arrow a1" d="M160 110 H190 m-8 -7 l8 7 -8 7"/>
+  <g class="vz-stage s2">
+    <rect class="vz-box b0" x="262" y="40" width="36" height="22"/>
+    <path class="vz-link l1" d="M280 62 V76 M226 76 H334 M226 76 V86 M280 76 V86 M334 76 V86"/>
+    <rect class="vz-box b1" x="210" y="86" width="32" height="20"/><rect class="vz-box b2" x="264" y="86" width="32" height="20"/><rect class="vz-box b3" x="318" y="86" width="32" height="20"/>
+    <path class="vz-link l2" d="M226 106 V118 M216 118 H236 M216 118 V126 M236 118 V126 M280 106 V126 M334 106 V118 M324 118 H344 M324 118 V126 M344 118 V126"/>
+    <rect class="vz-leaf c1" x="208" y="126" width="16" height="14"/><rect class="vz-leaf c2" x="228" y="126" width="16" height="14"/><rect class="vz-leaf c3" x="272" y="126" width="16" height="14"/><rect class="vz-leaf c4" x="316" y="126" width="16" height="14"/><rect class="vz-leaf c5" x="336" y="126" width="16" height="14"/>
+    <text class="vz-lbl" x="280" y="200" text-anchor="middle">Work breakdown</text>
+  </g>
+  <path class="vz-arrow a2" d="M370 110 H400 m-8 -7 l8 7 -8 7"/>
+  <g class="vz-stage s3">
+    <rect class="vz-frame" x="412" y="46" width="96" height="96" rx="6"/>
+    <rect class="vz-bar g1" x="422" y="60" width="40" height="10"/><rect class="vz-bar g2" x="440" y="80" width="48" height="10"/><rect class="vz-bar g3" x="458" y="100" width="40" height="10"/>
+    <rect class="vz-ms" x="492" y="120" width="10" height="10" transform="rotate(45 497 125)"/>
+    <g class="vz-tag"><path d="M438 152 h44 l12 12 -12 12 h-44 z"/><circle cx="446" cy="164" r="3"/><text x="466" y="169" text-anchor="middle">$</text></g>
+    <text class="vz-lbl" x="460" y="200" text-anchor="middle">Plan and price</text>
+  </g>
+</svg></div>
+            <ul class="pz-stats"><li><b>7</b>verticals proposed</li><li><b>3</b>pricing models</li><li><b>WBS</b>PERT, analogous</li></ul>
+            <a class="pz-go" href="/work.html#scope">See scoping work</a>
+          </div>
+          <div class="pz-panel" role="tabpanel" id="pz-p2" aria-labelledby="pz-t2" hidden>
+            <div class="pz-viz"><svg class="viz viz-ship" viewBox="0 0 520 250" role="img" aria-label="Work moving across a sprint board from To do to Done, with sprint reliability rising from 60 to 90 percent">
+  <g class="vz-cols">
+    <rect x="16" y="20" width="148" height="150" rx="8"/><rect x="186" y="20" width="148" height="150" rx="8"/><rect x="356" y="20" width="148" height="150" rx="8"/>
+  </g>
+  <text class="vz-lbl" x="30" y="42">To do</text><text class="vz-lbl" x="200" y="42">Doing</text><text class="vz-lbl" x="370" y="42">Done</text>
+  <g class="vz-card k1"><rect x="28" y="54" width="124" height="26" rx="4"/><rect class="vz-line" x="36" y="64" width="60" height="6"/></g>
+  <g class="vz-card k2"><rect x="28" y="88" width="124" height="26" rx="4"/><rect class="vz-line" x="36" y="98" width="80" height="6"/></g>
+  <g class="vz-card k3"><rect x="28" y="122" width="124" height="26" rx="4"/><rect class="vz-line" x="36" y="132" width="50" height="6"/></g>
+  <g class="vz-done"><rect x="368" y="54" width="124" height="26" rx="4"/><path d="M378 67 l5 5 9 -10"/></g>
+  <text class="vz-lbl" x="16" y="206">Sprint reliability</text>
+  <rect class="vz-track" x="16" y="216" width="488" height="16" rx="3"/>
+  <rect class="vz-fill" x="16" y="216" width="488" height="16" rx="3"/>
+  <path class="vz-mark60" d="M308.8 210 V238"/><text class="vz-tick" x="308.8" y="250" text-anchor="middle">60%</text>
+  <path class="vz-mark90" d="M455.2 210 V238"/><text class="vz-tick hi" x="455.2" y="250" text-anchor="middle">90%</text>
+</svg></div>
+            <ul class="pz-stats"><li><b>60→90%</b>sprint reliability</li><li><b>50%</b>faster BI delivery</li><li><b>14</b>hubs closed safely</li></ul>
+            <a class="pz-go" href="/work.html#ship">See delivery work</a>
+          </div>
+          <div class="pz-panel" role="tabpanel" id="pz-p3" aria-labelledby="pz-t3" hidden>
+            <div class="pz-viz"><svg class="viz viz-improve" viewBox="0 0 520 250" role="img" aria-label="Daily SLA breaches falling from 200 to 60 after the fix">
+  <path class="vz-grid" d="M40 40 H500 M40 90 H500 M40 140 H500 M40 190 H500"/>
+  <text class="vz-tick" x="32" y="44" text-anchor="end">200</text><text class="vz-tick" x="32" y="144" text-anchor="end">60</text><text class="vz-tick" x="32" y="194" text-anchor="end">0</text>
+  <rect class="vz-before" x="70" y="40" width="70" height="150"/>
+  <rect class="vz-after" x="190" y="145" width="70" height="45"/>
+  <text class="vz-lbl" x="105" y="214" text-anchor="middle">Before</text><text class="vz-lbl" x="225" y="214" text-anchor="middle">After</text>
+  <text class="vz-big" x="105" y="30" text-anchor="middle">200</text><text class="vz-big hi" x="225" y="135" text-anchor="middle">60</text>
+  <text class="vz-cap" x="165" y="240" text-anchor="middle">SLA breaches a day</text>
+  <path class="vz-leak" d="M300 60 C340 64 352 110 380 130 S440 176 500 180"/>
+  <circle class="vz-dot" cx="500" cy="180" r="6"/>
+  <text class="vz-cap" x="400" y="214" text-anchor="middle">Revenue leakage</text>
+  <text class="vz-cap hi" x="400" y="236" text-anchor="middle">BDT 40K a day recovered</text>
+</svg></div>
+            <ul class="pz-stats"><li><b>BDT 40K</b>a day recovered</li><li><b>~10%</b>GMV rise in campaigns</li><li><b>30→5 min</b>reports, with AI</li></ul>
+            <a class="pz-go" href="/work.html#improve">See improvement work</a>
+          </div>
         </div>
-        <div class="clients clients-inner">
+
+        <!-- 4. Client logos (brand marks from Wikimedia Commons / Simple Icons) -->
+        <div class="clients-wall">
           <p class="clients-label">Delivered data work for</p>
-          <ul><li>PIMCO</li><li>Yamaha</li><li>Toyota</li><li>Dell</li><li>PMI</li><li>HealthHub</li></ul>
+          <ul>
+            <li><img src="/assets/logos/pimco.svg" alt="PIMCO" width="107" height="20" loading="lazy"></li>
+            <li><img src="/assets/logos/yamaha.svg" alt="Yamaha" width="150" height="30" loading="lazy"></li>
+            <li><img src="/assets/logos/toyota.svg" alt="Toyota" width="136" height="24" loading="lazy"></li>
+            <li><img class="sq" src="/assets/logos/dell.svg" alt="Dell" width="44" height="44" loading="lazy"></li>
+            <li><img src="/assets/logos/pmi.svg" alt="Philip Morris International" width="150" height="36" loading="lazy"></li>
+            <li><span class="wordmark-hh" role="img" aria-label="HealthHub">Health<b>Hub</b></span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -291,14 +347,21 @@
       <div class="wrap">
         <h2 id="contact-title">Have a project that needs a plan?</h2>
         <p class="lede">Whether it’s a role, a project or a question about delivery, my inbox is open.</p>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="mailto:ashikhasan.ku@gmail.com">ashikhasan.ku@gmail.com</a>
-          <button class="btn btn-ghost" type="button" data-resume-open>Request my résumé</button>
-          <button class="btn btn-ghost" type="button" data-copy="ashikhasan.ku@gmail.com">Copy email</button>
+        <div class="contact-cards">
+          <a class="cc" href="mailto:ashikhasan.ku@gmail.com">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 3h14v10H1zM3 5v1h1v1h1v1h1v1h4V8h1V7h1V6h1V5h-1v1h-1v1h-1v1H6V7H5V6H4V5z"/></svg>
+            <b>Send an email</b><span>ashikhasan.ku@gmail.com</span>
+          </a>
+          <button class="cc" type="button" data-resume-open>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1h7l3 3v11H3zM5 6v1h6V6zm0 3v1h6V9zm0 3v1h4v-1z"/></svg>
+            <b>Request my résumé</b><span>An up-to-date copy by email</span>
+          </button>
+          <!-- BOOKING: set your booking link in /assets/js/career-data.js (window.SITE.bookingUrl). Until then this opens an email. -->
+          <a class="cc cc-hot" href="mailto:ashikhasan.ku@gmail.com?subject=Meeting%20request" data-booking>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1h2v2h4V1h2v2h3v12H1V3h3zM3 7v6h10V7zm2 2h2v2H5z"/></svg>
+            <b>Book a meeting</b><span>Pick a 30-minute slot</span>
+          </a>
         </div>
-        <ul class="contact-links">
-          <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
         <img class="contact-sprite" src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
       </div>

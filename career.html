@@ -208,39 +208,26 @@
             </ul>
           </article>
 
-          <!-- ===== How I work ===== -->
+          <!-- ===== How I work: a periodic table of PM methods ===== -->
           <article class="role" id="methods">
             <h2 class="block-title">How I work</h2>
-            <p class="role-summary">The methods and artefacts I use to plan, estimate, prioritise, govern and deliver.</p>
-            <div class="methods">
-              <div class="method"><h3>Plan</h3><ul class="tags"><li>WBS</li><li>Gantt</li><li>Critical path</li><li>Milestone planning</li><li>Resource planning</li></ul></div>
-              <div class="method"><h3>Estimate</h3><ul class="tags"><li>PERT (three-point)</li><li>Analogous</li><li>Bottom-up</li><li>Story points</li><li>T-shirt sizing</li></ul></div>
-              <div class="method"><h3>Prioritise</h3><ul class="tags"><li>MoSCoW</li><li>RICE</li><li>Value vs effort</li><li>Kano</li></ul></div>
-              <div class="method"><h3>Govern</h3><ul class="tags"><li>RACI</li><li>RAID</li><li>Earned value (CPI, SPI)</li><li>Stage gates</li><li>Change control</li></ul></div>
-              <div class="method"><h3>Deliver</h3><ul class="tags"><li>Scrum</li><li>Kanban</li><li>Hybrid</li><li>DoR and DoD</li><li>Velocity and burndown</li><li>UAT</li></ul></div>
-              <div class="method"><h3>Document</h3><ul class="tags"><li>BRD</li><li>SRS</li><li>PRD</li><li>SOW</li><li>Release notes</li></ul></div>
+            <p class="role-summary">The methods and artefacts I use, grouped by what they’re for. Pick a group to light it up.</p>
+            <div class="ptable" data-ptable>
+              <div class="pt-filters" role="group" aria-label="Filter methods by purpose"><button type="button" class="ptf" data-f="all" aria-pressed="true">All</button><button type="button" class="ptf ptf-plan" data-f="plan" aria-pressed="false">Plan</button><button type="button" class="ptf ptf-est" data-f="est" aria-pressed="false">Estimate</button><button type="button" class="ptf ptf-pri" data-f="pri" aria-pressed="false">Prioritise</button><button type="button" class="ptf ptf-gov" data-f="gov" aria-pressed="false">Govern</button><button type="button" class="ptf ptf-del" data-f="del" aria-pressed="false">Deliver</button><button type="button" class="ptf ptf-doc" data-f="doc" aria-pressed="false">Document</button></div>
+              <ul class="pt-grid"><li class="el el-plan" data-g="plan"><span class="el-n">1</span><b>Wb</b><span class="el-name">WBS</span></li><li class="el el-plan" data-g="plan"><span class="el-n">2</span><b>Gt</b><span class="el-name">Gantt</span></li><li class="el el-plan" data-g="plan"><span class="el-n">3</span><b>Cp</b><span class="el-name">Critical path</span></li><li class="el el-plan" data-g="plan"><span class="el-n">4</span><b>Ms</b><span class="el-name">Milestones</span></li><li class="el el-plan" data-g="plan"><span class="el-n">5</span><b>Rp</b><span class="el-name">Resource plan</span></li><li class="el el-est" data-g="est"><span class="el-n">6</span><b>Pe</b><span class="el-name">PERT</span></li><li class="el el-est" data-g="est"><span class="el-n">7</span><b>An</b><span class="el-name">Analogous</span></li><li class="el el-est" data-g="est"><span class="el-n">8</span><b>Bu</b><span class="el-name">Bottom-up</span></li><li class="el el-est" data-g="est"><span class="el-n">9</span><b>Sp</b><span class="el-name">Story points</span></li><li class="el el-est" data-g="est"><span class="el-n">10</span><b>Ts</b><span class="el-name">T-shirt sizing</span></li><li class="el el-pri" data-g="pri"><span class="el-n">11</span><b>Mo</b><span class="el-name">MoSCoW</span></li><li class="el el-pri" data-g="pri"><span class="el-n">12</span><b>Ri</b><span class="el-name">RICE</span></li><li class="el el-pri" data-g="pri"><span class="el-n">13</span><b>Ve</b><span class="el-name">Value vs effort</span></li><li class="el el-pri" data-g="pri"><span class="el-n">14</span><b>Ka</b><span class="el-name">Kano</span></li><li class="el el-gov" data-g="gov"><span class="el-n">15</span><b>Rc</b><span class="el-name">RACI</span></li><li class="el el-gov" data-g="gov"><span class="el-n">16</span><b>Rd</b><span class="el-name">RAID</span></li><li class="el el-gov" data-g="gov"><span class="el-n">17</span><b>Ev</b><span class="el-name">Earned value</span></li><li class="el el-gov" data-g="gov"><span class="el-n">18</span><b>Sg</b><span class="el-name">Stage gates</span></li><li class="el el-gov" data-g="gov"><span class="el-n">19</span><b>Cc</b><span class="el-name">Change control</span></li><li class="el el-del" data-g="del"><span class="el-n">20</span><b>Sc</b><span class="el-name">Scrum</span></li><li class="el el-del" data-g="del"><span class="el-n">21</span><b>Kb</b><span class="el-name">Kanban</span></li><li class="el el-del" data-g="del"><span class="el-n">22</span><b>Hy</b><span class="el-name">Hybrid</span></li><li class="el el-del" data-g="del"><span class="el-n">23</span><b>Dd</b><span class="el-name">DoR and DoD</span></li><li class="el el-del" data-g="del"><span class="el-n">24</span><b>Vb</b><span class="el-name">Velocity, burndown</span></li><li class="el el-del" data-g="del"><span class="el-n">25</span><b>Ua</b><span class="el-name">UAT</span></li><li class="el el-doc" data-g="doc"><span class="el-n">26</span><b>Br</b><span class="el-name">BRD</span></li><li class="el el-doc" data-g="doc"><span class="el-n">27</span><b>Sr</b><span class="el-name">SRS</span></li><li class="el el-doc" data-g="doc"><span class="el-n">28</span><b>Pr</b><span class="el-name">PRD</span></li><li class="el el-doc" data-g="doc"><span class="el-n">29</span><b>Sw</b><span class="el-name">SOW</span></li><li class="el el-doc" data-g="doc"><span class="el-n">30</span><b>Rn</b><span class="el-name">Release notes</span></li></ul>
             </div>
           </article>
 
           <!-- ===== Stack and domains ===== -->
           <article class="role" id="stack">
             <h2 class="block-title">Stack and domains</h2>
-            <p class="role-summary">Where I’ve worked, and the tools I’ve worked with.</p>
-            <div class="domain-map">
-              <a href="#bs23"><b>Telco</b><span>Brain Station 23</span></a>
-              <a href="#daraz"><b>E-commerce and logistics</b><span>Daraz, iFarmer</span></a>
-              <a href="#ifarmer"><b>Fintech and agritech</b><span>iFarmer</span></a>
-              <a href="#wpp"><b>Data and BI</b><span>WPP Production</span></a>
-              <a href="#bs23"><b>Learning platforms</b><span>Brain Station 23</span></a>
-              <a href="#bs23"><b>Website development and cloud</b><span>Brain Station 23</span></a>
-              <a href="#bs23"><b>SaaS products</b><span>Brain Station 23</span></a>
-              <a href="#bdjobs"><b>Job platforms and UX</b><span>Bdjobs.com</span></a>
+            <p class="role-summary">Point at a domain to see where I worked in it.</p>
+            <div class="dmap" data-dmap>
+              <div class="dmap-doms"><button type="button" class="dom" data-co="bs23">Telco</button><button type="button" class="dom" data-co="daraz ifarmer">E-commerce and logistics</button><button type="button" class="dom" data-co="ifarmer">Fintech and agritech</button><button type="button" class="dom" data-co="wpp">Data and BI</button><button type="button" class="dom" data-co="bs23">Learning platforms</button><button type="button" class="dom" data-co="bs23">Website development and cloud</button><button type="button" class="dom" data-co="bs23">SaaS products</button><button type="button" class="dom" data-co="bdjobs">Job platforms and UX</button></div>
+              <ul class="dmap-cos" aria-label="Companies"><li data-co="bs23"><span data-logo="bs23"></span><span>Brain Station 23</span></li><li data-co="daraz"><span data-logo="daraz"></span><span>Daraz</span></li><li data-co="wpp"><span data-logo="wpp"></span><span>WPP Production</span></li><li data-co="ifarmer"><span data-logo="ifarmer"></span><span>iFarmer</span></li><li data-co="bdjobs"><span data-logo="bdjobs"></span><span>Bdjobs.com</span></li></ul>
             </div>
-            <div class="toolkit">
-              <div class="kit"><h3>Delivery and tracking</h3><ul class="tags"><li>Jira</li><li>Confluence</li><li>Azure DevOps</li><li>Asana</li><li>Trello</li></ul></div>
-              <div class="kit"><h3>BI and analytics</h3><ul class="tags"><li>Power BI</li><li>Tableau</li><li>Looker Studio</li><li>Domo</li><li>GA4</li><li>Mixpanel</li><li>Excel</li></ul></div>
-              <div class="kit"><h3>Design and QA</h3><ul class="tags"><li>Figma</li><li>Mantis</li></ul></div>
-            </div>
+            <h3 class="sub-title">Tools I’ve used</h3>
+            <div class="toolkit2"><div class="kit2"><h3>Delivery and tracking</h3><ul><li class="tool"><img src="/assets/logos/jira.svg" alt="" width="28" height="28" loading="lazy"><span>Jira</span></li><li class="tool"><img src="/assets/logos/confluence.svg" alt="" width="28" height="28" loading="lazy"><span>Confluence</span></li><li class="tool"><img src="/assets/logos/azuredevops.svg" alt="" width="28" height="28" loading="lazy"><span>Azure DevOps</span></li><li class="tool"><img src="/assets/logos/asana.svg" alt="" width="28" height="28" loading="lazy"><span>Asana</span></li><li class="tool"><img src="/assets/logos/trello.svg" alt="" width="28" height="28" loading="lazy"><span>Trello</span></li></ul></div><div class="kit2"><h3>BI and analytics</h3><ul><li class="tool"><img src="/assets/logos/powerbi.svg" alt="" width="28" height="28" loading="lazy"><span>Power BI</span></li><li class="tool"><img src="/assets/logos/tableau.svg" alt="" width="28" height="28" loading="lazy"><span>Tableau</span></li><li class="tool"><img src="/assets/logos/looker.svg" alt="" width="28" height="28" loading="lazy"><span>Looker Studio</span></li><li class="tool"><span class="tool-mono" aria-hidden="true">D</span><span>Domo</span></li><li class="tool"><img src="/assets/logos/googleanalytics.svg" alt="" width="28" height="28" loading="lazy"><span>GA4</span></li><li class="tool"><img src="/assets/logos/mixpanel.svg" alt="" width="28" height="28" loading="lazy"><span>Mixpanel</span></li><li class="tool"><img src="/assets/logos/excel.svg" alt="" width="28" height="28" loading="lazy"><span>Excel</span></li></ul></div><div class="kit2"><h3>Design and QA</h3><ul><li class="tool"><img src="/assets/logos/figma.svg" alt="" width="28" height="28" loading="lazy"><span>Figma</span></li><li class="tool"><span class="tool-mono" aria-hidden="true">M</span><span>Mantis</span></li></ul></div></div>
             <div class="fluency">
               <h3>Technical fluency</h3>
               <p>Enough to speak engineering’s language and manage technical projects well. I’m a project manager, not a developer.</p>
@@ -256,14 +243,21 @@
       <div class="wrap">
         <h2 id="contact-title">Have a project that needs a plan?</h2>
         <p class="lede">Whether it’s a role, a project or a question about delivery, my inbox is open.</p>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="mailto:ashikhasan.ku@gmail.com">ashikhasan.ku@gmail.com</a>
-          <button class="btn btn-ghost" type="button" data-resume-open>Request my résumé</button>
-          <button class="btn btn-ghost" type="button" data-copy="ashikhasan.ku@gmail.com">Copy email</button>
+        <div class="contact-cards">
+          <a class="cc" href="mailto:ashikhasan.ku@gmail.com">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 3h14v10H1zM3 5v1h1v1h1v1h1v1h4V8h1V7h1V6h1V5h-1v1h-1v1h-1v1H6V7H5V6H4V5z"/></svg>
+            <b>Send an email</b><span>ashikhasan.ku@gmail.com</span>
+          </a>
+          <button class="cc" type="button" data-resume-open>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1h7l3 3v11H3zM5 6v1h6V6zm0 3v1h6V9zm0 3v1h4v-1z"/></svg>
+            <b>Request my résumé</b><span>An up-to-date copy by email</span>
+          </button>
+          <!-- BOOKING: set your booking link in /assets/js/career-data.js (window.SITE.bookingUrl). Until then this opens an email. -->
+          <a class="cc cc-hot" href="mailto:ashikhasan.ku@gmail.com?subject=Meeting%20request" data-booking>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1h2v2h4V1h2v2h3v12H1V3h3zM3 7v6h10V7zm2 2h2v2H5z"/></svg>
+            <b>Book a meeting</b><span>Pick a 30-minute slot</span>
+          </a>
         </div>
-        <ul class="contact-links">
-          <li><a href="https://www.linkedin.com/in/ashikhasan-ku/" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
         <p class="copy-status" role="status" aria-live="polite"></p>
         <img class="contact-sprite" src="/assets/photos/avatar-pixel.png" alt="" width="40" height="50" loading="lazy">
       </div>
