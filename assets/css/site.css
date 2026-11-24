@@ -1894,3 +1894,14 @@ a.score-card:hover { color: var(--ink); }
 .masonry figure { min-width: 0; min-height: 0; overflow: hidden; } .masonry { overflow: hidden; }
 .masonry figure, .masonry figure:nth-child(n) { aspect-ratio: auto; }
 @media (max-width: 600px) { .masonry figure:nth-child(6) { grid-row: auto; } }
+/* About v3.4: shorter cover, face-aware thumbnails */
+.about-cs { grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); }
+.scan { aspect-ratio: 1 / 1; max-width: 30rem; width: 100%; justify-self: center; }
+.scan img { object-position: 62% 38%; }
+@media (max-width: 900px) { .scan { max-width: 24rem; aspect-ratio: 5 / 4; } }
+.masonry figure:nth-child(1) img { object-position: 50% 12%; }
+.masonry figure:nth-child(2) img { object-position: 50% 18%; }
+.masonry figure:nth-child(3) img { object-position: 60% 25%; }
+.masonry figure:nth-child(4) img { object-position: 50% 30%; }
+.masonry figure:nth-child(5) img { object-position: 50% 20%; }
+.masonry figure:nth-child(6) img { object-position: 50% 15%; }
