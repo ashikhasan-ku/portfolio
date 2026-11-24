@@ -655,4 +655,28 @@
   if (window.SITE && window.SITE.bookingUrl) {
     document.querySelectorAll('[data-booking]').forEach(function (a) { a.href = window.SITE.bookingUrl; a.target = '_blank'; a.rel = 'noopener'; });
   }
+
+  /* ---------- About: 8-bit scanner over the cover photo ---------- */
+  document.querySelectorAll('[data-scan]').forEach(function (sc) {
+    var btn = sc.querySelector('.scan-toggle');
+    var R = function () { return Math.max(56, sc.clientWidth * 0.2) + 'px'; };
+    var move = function (e) {
+      var r = sc.getBoundingClientRect();
+      sc.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      sc.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    };
+    sc.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'mouse') return; sc.classList.add('on', 'used'); sc.style.setProperty('--r', R()); move(e); });
+    sc.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') move(e); });
+    sc.addEventListener('pointerleave', function () { sc.classList.remove('on'); sc.style.setProperty('--r', '0px'); });
+    btn.addEventListener('click', function () {
+      var on = btn.getAttribute('aria-pressed') !== 'true';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false'); sc.classList.toggle('full', on); sc.classList.add('used');
+    });
+    if (!reduceMotion) {                                   // one scan line sweeps down when the page opens
+      sc.classList.add('sweep'); var t0 = null;
+      var sweep = function (t) { if (!t0) t0 = t; var k = Math.min(1, (t - t0) / 1600);
+        sc.style.setProperty('--sy', (-20 + k * 140) + '%'); if (k < 1) requestAnimationFrame(sweep); else sc.classList.remove('sweep'); };
+      setTimeout(function () { requestAnimationFrame(sweep); }, 500);
+    }
+  });
 })();
