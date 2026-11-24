@@ -1905,3 +1905,4 @@ a.score-card:hover { color: var(--ink); }
 .masonry figure:nth-child(4) img { object-position: 50% 30%; }
 .masonry figure:nth-child(5) img { object-position: 50% 20%; }
 .masonry figure:nth-child(6) img { object-position: 50% 15%; }
+.masonry figure:nth-child(3) img { object-position: 50% 14%; }
