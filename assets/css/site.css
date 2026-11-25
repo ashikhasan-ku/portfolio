@@ -1827,7 +1827,7 @@ a.score-card:hover { color: var(--ink); }
 .ep-char::before { content: ""; width: 8px; height: 8px; background: var(--amber); }
 
 /* Game cases with original cover-style art; the disc slides out on hover */
-.cases { list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem 1.1rem; padding-top: .5rem; }
+.gcases { list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem 1.1rem; padding-top: .5rem; }
 .case { position: relative; display: grid; gap: .45rem; }
 .case-box { position: relative; z-index: 1; aspect-ratio: 5 / 7; display: grid; grid-template-rows: 1fr auto; border: 2px solid var(--ink); border-left-width: 8px; background: var(--ink); overflow: hidden; box-shadow: 4px 4px 0 0 var(--ink); transition: transform .3s cubic-bezier(.2,.8,.2,1); }
 .case-art { display: block; }
@@ -1851,10 +1851,10 @@ a.score-card:hover { color: var(--ink); }
 .masonry figure:nth-child(2) { grid-row: span 2; }
 .masonry figure:nth-child(6) { grid-row: span 1; }
 
-@media (max-width: 1100px) { .anime { grid-template-columns: repeat(3, minmax(0, 1fr)); } .cases { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 1100px) { .anime { grid-template-columns: repeat(3, minmax(0, 1fr)); } .gcases { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .about-cs { grid-template-columns: 1fr; } .scan { max-width: 26rem; } .ach { grid-template-columns: 1fr 1fr; } .gamertag { grid-template-columns: auto minmax(0, 1fr); } .gamertag .gt-stats { grid-column: 1 / -1; } }
 @media (max-width: 600px) {
-  .ach { grid-template-columns: 1fr; } .anime { grid-template-columns: 1fr 1fr; } .cases { grid-template-columns: 1fr 1fr; }
+  .ach { grid-template-columns: 1fr; } .anime { grid-template-columns: 1fr 1fr; } .gcases { grid-template-columns: 1fr 1fr; }
   .sheet-stats { grid-template-columns: 1fr 1fr; } .gt-sprite { width: 72px !important; height: 78px !important; }
   .gamertag .gt-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } .gamertag .gt-stats div { min-width: 0; }
   .masonry { grid-template-columns: 1fr 1fr; grid-auto-rows: 11rem; }
@@ -1906,3 +1906,56 @@ a.score-card:hover { color: var(--ink); }
 .masonry figure:nth-child(5) img { object-position: 50% 20%; }
 .masonry figure:nth-child(6) img { object-position: 50% 15%; }
 .masonry figure:nth-child(3) img { object-position: 50% 14%; }
+
+/* =========================================================
+   v3.5 responsive fixes (phones and tablets)
+   ========================================================= */
+/* About hero: the compact cover layout is for wide screens only */
+@media (max-width: 900px) {
+  .about-cs { grid-template-columns: 1fr; }
+  .scan { max-width: 30rem; aspect-ratio: 4 / 3.4; justify-self: start; }
+}
+@media (max-width: 600px) { .scan { max-width: none; aspect-ratio: 1 / 1; } .scan-hud.bl { display: none; } }
+
+/* Gamer tag stats never clip */
+@media (max-width: 600px) {
+  .gamertag { padding: 1rem; gap: .9rem; }
+  .gamertag .gt-name { font-size: 1.7rem; }
+  .gamertag .gt-stats { gap: .35rem; }
+  .gamertag .gt-stats div { padding: .45rem .5rem; }
+  .gamertag .gt-stats dd { font-size: .72rem; overflow-wrap: anywhere; }
+}
+
+/* Work pillar headers stack cleanly on phones */
+@media (max-width: 720px) {
+  .pillar-head { grid-template-columns: 1fr; gap: 1rem; }
+  .pillar-head .pillar-step { display: none; }
+  .ph-viz { padding: .75rem; box-shadow: 4px 4px 0 0 var(--ink); }
+}
+
+/* Home portrait on tablets: keep the seal and tag inside the frame */
+@media (min-width: 861px) and (max-width: 1240px) {
+  .home-hero .hero-grid { grid-template-columns: minmax(0, 1fr) 300px; gap: 2.5rem; }
+  .csm-seal { left: -1.5rem; width: 7.4rem; }
+  .portrait-pop .sticker-tag { right: .25rem; }
+}
+@media (max-width: 860px) { .portrait-pop .sticker-tag { right: .25rem; } }
+
+/* Touch screens: no hover-only hints, comfortable tap targets */
+@media (pointer: coarse) {
+  .flip-hint .hint-hover { display: none; }
+  .ptf, .dom, .dlg-btn { min-height: 40px; }
+}
+@media (pointer: fine) { .flip-hint .hint-tap { display: none; } }
+
+/* Small phones */
+@media (max-width: 380px) {
+  .wrap { padding-inline: 1rem; }
+  .ta-word { font-size: clamp(2.4rem, 13.6vw, 3.4rem); }
+  .pz-tabs { gap: .4rem; } .pz-tab { padding: .65rem .5rem; } .pz-tab b { font-size: .92rem; }
+  .main-nav .dock a span { font-size: .64rem; }
+  .score-card .num { font-size: 1.9rem; }
+}
+dd { margin: 0; }
+.gamertag .gt-stats dd { overflow-wrap: normal; white-space: nowrap; }
+@media (max-width: 600px) { .gamertag .gt-stats dd { font-size: .7rem; } .gamertag .gt-stats dt { font-size: .52rem; } }
