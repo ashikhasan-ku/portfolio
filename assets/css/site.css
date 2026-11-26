@@ -1959,3 +1959,21 @@ a.score-card:hover { color: var(--ink); }
 dd { margin: 0; }
 .gamertag .gt-stats dd { overflow-wrap: normal; white-space: nowrap; }
 @media (max-width: 600px) { .gamertag .gt-stats dd { font-size: .7rem; } .gamertag .gt-stats dt { font-size: .52rem; } }
+/* Dark mode: the white dock on navy heroes keeps fixed light-mode colours */
+.navy-head .site-header:not(.is-scrolled) .main-nav .dock a { color: #3C4A69; }
+.navy-head .site-header:not(.is-scrolled) .main-nav .dock a:hover { color: #13213D; }
+.navy-head .site-header:not(.is-scrolled) .main-nav .dock a[aria-current="page"] { color: #fff; }
+.navy-head .site-header:not(.is-scrolled) .dock-ind { background: #2D55E6; }
+.navy-head .site-header:not(.is-scrolled) .dock a .nav-ico { color: currentColor; }
+.navy-head .site-header:not(.is-scrolled) .dock a[aria-current="page"] .nav-ico { color: #F2B843; }
+.navy-head .site-header:not(.is-scrolled) .dock.is-peek .dock-ind { background: #DCE4FF; }
+.navy-head .site-header:not(.is-scrolled) .dock.is-peek a:hover { color: #13213D !important; }
+.navy-head .site-header:not(.is-scrolled) .dock.is-peek a:hover .nav-ico { color: #2D55E6; }
+.navy-head .site-header:not(.is-scrolled) .dock.is-peek a[aria-current="page"]:not(:hover) { color: #3C4A69; }
+@media (max-width: 720px) {
+  .navy-head .site-header:not(.is-scrolled) .main-nav .dock a { color: rgba(238,242,250,.78); }
+  .navy-head .site-header:not(.is-scrolled) .main-nav .dock a[aria-current="page"] { color: #13213D; }
+  .navy-head .site-header:not(.is-scrolled) .dock-ind { background: #F3F5F9; }
+  .navy-head .site-header:not(.is-scrolled) .dock a[aria-current="page"] .nav-ico { color: #2D55E6; }
+}
+.clients-wall li:has(img[src*="pmi"]) img { max-height: 2.4rem; } .clients-wall li:has(img[src*="healthhub"]) img { max-height: 2.6rem; }
