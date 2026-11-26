@@ -8,7 +8,12 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Cross-Origin-Opener-Policy = "same-origin"
+    # Content Security Policy: only this site's own scripts may run.
+    # If you edit the small inline <script> in the page head, its sha256 hash below must be updated.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-mqZH40CaqRdQd2leLStyAj12v+3e3tR2Ovekc1QVly0=' 'sha256-YFGi/mz/r2ZamOarnidksX2p7zCMPbq5lNt9pHjpRHI='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.google.com https://*.gstatic.com https://media.licdn.com https://brainstation-23.com https://discover.daraz.com https://framerusercontent.com https://storage.googleapis.com; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
 
 # Styles and scripts are linked as site.css?v=<fingerprint>; the fingerprint changes
 # whenever the file changes, so browsers always get the current design.

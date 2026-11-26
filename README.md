@@ -95,3 +95,10 @@ Then open http://localhost:8080.
 - Only claim what you can back up in an interview. Numbers come from the CV.
 - Brain Station 23 bid clients stay anonymous; WPP clients are approved.
 - Public contact is email and LinkedIn only.
+
+## Security and privacy
+
+- `netlify.toml` sends security headers, including a Content Security Policy (CSP). Only this site's own scripts run.
+- If you change the small inline `<script>` in the page head, its hash in the CSP must be updated or that script is blocked (dark-mode memory stops working). Images from a new outside website also need adding to `img-src`.
+- Never commit passwords, API keys, your phone number, ID numbers or your IELTS candidate number: this repository is public.
+- Strip location data from photos before adding them (the existing ones are clean).
