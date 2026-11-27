@@ -5,7 +5,7 @@
 window.SITE = {
   bookingUrl: "",
   /* Google Analytics 4: paste your Measurement ID, e.g. "G-ABC123XYZ". Leave empty to turn analytics off. */
-  ga4: ""
+  ga4: "G-4R5JY9DE1B"
 };
 
 /* =========================================================
