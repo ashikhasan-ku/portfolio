@@ -2,7 +2,11 @@
    bookingUrl: paste your Google Calendar booking page or Calendly link here, e.g.
    "https://calendar.app.google/xxxx" or "https://calendly.com/ashikhasan/30min".
    Leave it empty and "Book a meeting" opens an email instead. */
-window.SITE = { bookingUrl: "" };
+window.SITE = {
+  bookingUrl: "",
+  /* Google Analytics 4: paste your Measurement ID, e.g. "G-ABC123XYZ". Leave empty to turn analytics off. */
+  ga4: ""
+};
 
 /* =========================================================
    CAREER DATA — the only file to edit when you change jobs.
